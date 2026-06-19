@@ -1,191 +1,117 @@
-// ============================================
-// Data
-// ============================================
+// ==========================================
+// MA'LUMOTLAR
+// ==========================================
 const categories = [
-    { id: 1, name: "Meva & Sabzavotlar", icon: "fa-apple-whole", slug: "fruits-vegetables", color: "#dcfce7", iconColor: "#16a34a" },
-    { id: 2, name: "Sut Mahsulotlari", icon: "fa-cow", slug: "dairy", color: "#dbeafe", iconColor: "#2563eb" },
-    { id: 3, name: "Go'sht & Baliq", icon: "fa-drumstick-bite", slug: "meat-fish", color: "#fce7f3", iconColor: "#ec4899" },
-    { id: 4, name: "Non Mahsulotlari", icon: "fa-bread-slice", slug: "bakery", color: "#fef3c7", iconColor: "#f59e0b" },
-    { id: 5, name: "Ichimliklar", icon: "fa-glass-water", slug: "beverages", color: "#cffafe", iconColor: "#06b6d4" },
-    { id: 6, name: "Shirinliklar", icon: "fa-cake-candles", slug: "sweets", color: "#fce7f3", iconColor: "#ec4899" },
-    { id: 7, name: "Sog'lom ovqat", icon: "fa-leaf", slug: "healthy", color: "#dcfce7", iconColor: "#16a34a" },
-    { id: 8, name: "Muzlatilgan", icon: "fa-snowflake", slug: "frozen", color: "#e0e7ff", iconColor: "#6366f1" },
+    { name: 'Meva & Sabzavotlar', icon: 'fa-apple-whole', filter: 'fruits' },
+    { name: 'Sut Mahsulotlari', icon: 'fa-cow', filter: 'dairy' },
+    { name: "Go'sht & Baliq", icon: 'fa-drumstick-bite', filter: 'meat' },
+    { name: 'Non Mahsulotlari', icon: 'fa-bread-slice', filter: 'bakery' },
+    { name: 'Ichimliklar', icon: 'fa-glass-water', filter: 'drinks' },
+    { name: 'Shirinliklar', icon: 'fa-cake-candles', filter: 'sweets' },
 ];
 
 const products = [
-    { id: 1, name: "Olma Golden", category: "fruits-vegetables", categoryName: "Meva & Sabzavotlar", price: 25000, oldPrice: 30000, unit: "kg", image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400", rating: 4.8, reviews: 124, badge: "Sotuvda", badgeColor: "#ef4444", description: "Yangi yig'ilgan, shirin va suvli Golden navli olmalar. Mahalliy fermerlardan.", stock: 50, isNew: false, isFeatured: true, hasDiscount: true },
-    { id: 2, name: "Banan", category: "fruits-vegetables", categoryName: "Meva & Sabzavotlar", price: 18000, oldPrice: null, unit: "kg", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400", rating: 4.6, reviews: 89, badge: null, description: "Ekvadordan import qilingan sariq bananlar.", stock: 100, isNew: false, isFeatured: true, hasDiscount: false },
-    { id: 3, name: "Sut 3.2%", category: "dairy", categoryName: "Sut Mahsulotlari", price: 12000, oldPrice: 14000, unit: "1L", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400", rating: 4.9, reviews: 256, badge: "Chegirma", badgeColor: "#f97316", description: "Yangi sut, tabiiy, 3.2% yog'lilik.", stock: 200, isNew: false, isFeatured: false, hasDiscount: true },
-    { id: 4, name: "Tovuq Go'shti (File)", category: "meat-fish", categoryName: "Go'sht & Baliq", price: 55000, oldPrice: null, unit: "kg", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400", rating: 4.7, reviews: 178, badge: "Yangi", badgeColor: "#22c55e", description: "Sovutilgan tovuq file, gormonsiz.", stock: 30, isNew: true, isFeatured: true, hasDiscount: false },
-    { id: 5, name: "Non (Oq)", category: "bakery", categoryName: "Non Mahsulotlari", price: 5000, oldPrice: null, unit: "dona", image: "https://images.unsplash.com/photo-1549931319-a545799f3a44?w=400", rating: 4.5, reviews: 412, badge: null, description: "Bugun pishirilgan yumshoq oq non.", stock: 75, isNew: false, isFeatured: false, hasDiscount: false },
-    { id: 6, name: "Coca-Cola 1.5L", category: "beverages", categoryName: "Ichimliklar", price: 10000, oldPrice: null, unit: "1.5L", image: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400", rating: 4.4, reviews: 567, badge: null, description: "Gazlangan ichimlik Coca-Cola.", stock: 150, isNew: false, isFeatured: false, hasDiscount: false },
-    { id: 7, name: "Shokoladli Tort", category: "sweets", categoryName: "Shirinliklar", price: 85000, oldPrice: 95000, unit: "dona", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400", rating: 4.9, reviews: 89, badge: "Premium", badgeColor: "#a855f7", description: "Belgiya shokoladi bilan qo'lda tayyorlangan tort.", stock: 15, isNew: false, isFeatured: true, hasDiscount: true },
-    { id: 8, name: "Yong'oq", category: "healthy", categoryName: "Sog'lom ovqat", price: 65000, oldPrice: null, unit: "kg", image: "https://images.unsplash.com/photo-1571506452821-d7b3e7a5f4e0?w=400", rating: 4.7, reviews: 67, badge: null, description: "Tabiiy grechka yong'og'i.", stock: 40, isNew: false, isFeatured: false, hasDiscount: false },
-    { id: 9, name: "Muzqaymoq Plombir", category: "frozen", categoryName: "Muzlatilgan", price: 15000, oldPrice: null, unit: "500ml", image: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400", rating: 4.8, reviews: 234, badge: "Xit", badgeColor: "#3b82f6", description: "Klassik plombir muzqaymoq.", stock: 80, isNew: true, isFeatured: false, hasDiscount: false },
-    { id: 10, name: "Pomidor Cherry", category: "fruits-vegetables", categoryName: "Meva & Sabzavotlar", price: 35000, oldPrice: 40000, unit: "kg", image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400", rating: 4.6, reviews: 98, badge: null, description: "Shirin cherry pomidorlari.", stock: 45, isNew: false, isFeatured: false, hasDiscount: true },
-    { id: 11, name: "Qaymoq 20%", category: "dairy", categoryName: "Sut Mahsulotlari", price: 22000, oldPrice: null, unit: "500ml", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400", rating: 4.5, reviews: 145, badge: null, description: "Tabiiy qaymoq.", stock: 60, isNew: false, isFeatured: false, hasDiscount: false },
-    { id: 12, name: "Losos Baliq", category: "meat-fish", categoryName: "Go'sht & Baliq", price: 120000, oldPrice: 135000, unit: "kg", image: "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400", rating: 4.9, reviews: 56, badge: "Chegirma", badgeColor: "#f97316", description: "Norvegiyadan import qilingan yangi losos.", stock: 20, isNew: false, isFeatured: true, hasDiscount: true },
+    { id: 1, name: 'Olma Golden', category: 'fruits', catName: 'Meva & Sabzavotlar', price: 25000, oldPrice: 30000, unit: 'kg', image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400', rating: 4.8, reviews: 124, badge: 'Chegirma', badgeColor: '#ef4444', featured: true, discount: true },
+    { id: 2, name: 'Banan', category: 'fruits', catName: 'Meva & Sabzavotlar', price: 18000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400', rating: 4.6, reviews: 89, badge: null, featured: true, discount: false },
+    { id: 3, name: 'Sut 3.2%', category: 'dairy', catName: 'Sut Mahsulotlari', price: 12000, oldPrice: 14000, unit: '1L', image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400', rating: 4.9, reviews: 256, badge: 'Aksiya', badgeColor: '#f97316', featured: false, discount: true },
+    { id: 4, name: "Tovuq Go'shti", category: 'meat', catName: "Go'sht & Baliq", price: 55000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400', rating: 4.7, reviews: 178, badge: 'Yangi', badgeColor: '#22c55e', featured: true, discount: false },
+    { id: 5, name: 'Non', category: 'bakery', catName: 'Non Mahsulotlari', price: 5000, oldPrice: null, unit: 'dona', image: 'https://images.unsplash.com/photo-1549931319-a545799f3a44?w=400', rating: 4.5, reviews: 412, badge: null, featured: false, discount: false },
+    { id: 6, name: 'Coca-Cola 1.5L', category: 'drinks', catName: 'Ichimliklar', price: 10000, oldPrice: null, unit: '1.5L', image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400', rating: 4.4, reviews: 567, badge: null, featured: false, discount: false },
+    { id: 7, name: 'Shokoladli Tort', category: 'sweets', catName: 'Shirinliklar', price: 85000, oldPrice: 95000, unit: 'dona', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400', rating: 4.9, reviews: 89, badge: 'Premium', badgeColor: '#a855f7', featured: true, discount: true },
+    { id: 8, name: "Yong'oq", category: 'fruits', catName: 'Meva & Sabzavotlar', price: 65000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571506452821-d7b3e7a5f4e0?w=400', rating: 4.7, reviews: 67, badge: null, featured: false, discount: false },
+    { id: 9, name: 'Muzqaymoq', category: 'dairy', catName: 'Sut Mahsulotlari', price: 15000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400', rating: 4.8, reviews: 234, badge: 'Xit', badgeColor: '#3b82f6', featured: false, discount: false },
+    { id: 10, name: 'Pomidor Cherry', category: 'fruits', catName: 'Meva & Sabzavotlar', price: 35000, oldPrice: 40000, unit: 'kg', image: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400', rating: 4.6, reviews: 98, badge: null, featured: false, discount: true },
+    { id: 11, name: 'Qaymoq 20%', category: 'dairy', catName: 'Sut Mahsulotlari', price: 22000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400', rating: 4.5, reviews: 145, badge: null, featured: false, discount: false },
+    { id: 12, name: 'Losos Baliq', category: 'meat', catName: "Go'sht & Baliq", price: 120000, oldPrice: 135000, unit: 'kg', image: 'https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400', rating: 4.9, reviews: 56, badge: 'Chegirma', badgeColor: '#f97316', featured: true, discount: true },
 ];
 
-const testimonials = [
-    { id: 1, name: "Dilnoza Karimova", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100", text: "Choice Market - mening sevimli online do'konim! Mahsulotlar har doim yangi va sifatli.", rating: 5, role: "Doimiy xaridor" },
-    { id: 2, name: "Akbar Aliyev", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100", text: "Buyurtma jarayoni juda qulay. Men ayniqsa meva-sabzavotlar sifatidan mamnunman.", rating: 4, role: "Doimiy xaridor" },
-    { id: 3, name: "Madina Usmonova", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100", text: "Kechagi buyurtmam 2 soat ichida yetib keldi. Hammasi toza va sifatli qadoqlangan.", rating: 5, role: "Yangi xaridor" },
-];
-
-// ============================================
-// Cart State
-// ============================================
-let cart = JSON.parse(localStorage.getItem('choiceMarketCart')) || [];
+// ==========================================
+// SAVAT (CART)
+// ==========================================
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function saveCart() {
-    localStorage.setItem('choiceMarketCart', JSON.stringify(cart));
-    updateCartUI();
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function addToCart(product) {
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-        existing.quantity += 1;
+    let item = cart.find(i => i.id === product.id);
+    if (item) {
+        item.qty += 1;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({ ...product, qty: 1 });
     }
     saveCart();
-    showNotification(product.name + ' savatga qo\'shildi!');
+    updateCartUI();
+    showNotification(product.name + " savatga qo'shildi!");
 }
 
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+function removeFromCart(id) {
+    cart = cart.filter(i => i.id !== id);
     saveCart();
+    updateCartUI();
 }
 
-function updateCartQuantity(productId, quantity) {
-    if (quantity < 1) {
-        removeFromCart(productId);
+function changeQty(id, delta) {
+    let item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty < 1) {
+        removeFromCart(id);
         return;
     }
-    const item = cart.find(item => item.id === productId);
-    if (item) {
-        item.quantity = quantity;
-    }
     saveCart();
+    updateCartUI();
 }
 
-function clearCart() {
-    cart = [];
-    saveCart();
+function cartTotal() {
+    return cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 }
 
-function getCartCount() {
-    return cart.reduce((count, item) => count + item.quantity, 0);
+function cartCount() {
+    return cart.reduce((sum, i) => sum + i.qty, 0);
 }
 
-function getCartTotal() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-}
-
-function formatPrice(price) {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " so'm";
-}
-
-// ============================================
-// UI Updates
-// ============================================
 function updateCartUI() {
-    const count = getCartCount();
-    const countEl = document.getElementById('cartCount');
-    if (countEl) {
-        countEl.textContent = count;
-        countEl.style.display = count > 0 ? 'flex' : 'none';
-    }
+    document.getElementById('cartCount').textContent = cartCount();
     renderCartItems();
 }
 
-function renderCartItems() {
-    const cartItemsEl = document.getElementById('cartItems');
-    const cartFooterEl = document.getElementById('cartFooter');
-    
-    if (cart.length === 0) {
-        cartItemsEl.innerHTML = `
-            <div class="cart-empty">
-                <i class="fas fa-shopping-basket"></i>
-                <p>Savat hozircha bo'sh</p>
-            </div>
-        `;
-        cartFooterEl.style.display = 'none';
-    } else {
-        cartItemsEl.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                <div class="cart-item-info">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">${formatPrice(item.price)}</div>
-                    <div class="cart-item-quantity">
-                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
-                    </div>
-                </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        `).join('');
-        
-        cartFooterEl.style.display = 'block';
-        document.getElementById('cartTotal').textContent = formatPrice(getCartTotal());
-    }
+// ==========================================
+// FORMAT PRICE
+// ==========================================
+function formatPrice(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + " so'm";
 }
 
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-    notification.classList.add('show');
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 2500);
-}
-
-// ============================================
-// Product Rendering
-// ============================================
-function createProductCard(product) {
-    const discountPercent = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
-    
+// ==========================================
+// PRODUCT CARD HTML
+// ==========================================
+function productCard(p) {
     return `
-        <div class="product-card" data-category="${product.category}">
-            <div class="product-image" onclick="openProductDetail(${product.id})">
-                <img src="${product.image}" alt="${product.name}" loading="lazy">
-                ${product.badge ? `<span class="product-badge" style="background: ${product.badgeColor}">${product.badge}</span>` : ''}
-                ${discountPercent > 0 ? `<span class="product-badge" style="background: #ef4444; top: ${product.badge ? '2.75rem' : '0.75rem'};">-${discountPercent}%</span>` : ''}
-            </div>
-            <div class="product-actions">
-                <button class="product-action-btn" onclick="openQuickView(${product.id})" title="Tezkor ko'rish">
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="product-action-btn" title="Sevimlilarga qo'shish">
-                    <i class="far fa-heart"></i>
-                </button>
+        <div class="product-card">
+            <div class="product-img" onclick="showDetail(${p.id})">
+                <img src="${p.image}" alt="${p.name}">
+                ${p.badge ? `<span class="product-badge" style="background:${p.badgeColor}">${p.badge}</span>` : ''}
+                <div class="product-actions">
+                    <button title="Ko'rish" onclick="event.stopPropagation();showDetail(${p.id})"><i class="fas fa-eye"></i></button>
+                    <button title="Sevimli"><i class="far fa-heart"></i></button>
+                </div>
             </div>
             <div class="product-info">
-                <div class="product-category">${product.categoryName}</div>
-                <div class="product-name" onclick="openProductDetail(${product.id})">${product.name}</div>
+                <div class="product-cat">${p.catName}</div>
+                <div class="product-name" onclick="showDetail(${p.id})">${p.name}</div>
                 <div class="product-rating">
-                    ${Array.from({ length: 5 }, (_, i) => 
-                        i < Math.floor(product.rating) 
-                            ? '<i class="fas fa-star"></i>' 
-                            : i < product.rating 
-                                ? '<i class="fas fa-star-half-alt"></i>' 
-                                : '<i class="far fa-star"></i>'
-                    ).join('')}
-                    <span>(${product.reviews})</span>
+                    ${'<i class="fas fa-star"></i>'.repeat(Math.floor(p.rating))}
+                    ${p.rating % 1 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+                    <span>(${p.reviews})</span>
                 </div>
                 <div class="product-price">
-                    <span class="price-current">${formatPrice(product.price)}</span>
-                    ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                    <span class="product-unit">/ ${product.unit}</span>
+                    <span class="price-now">${formatPrice(p.price)}</span>
+                    ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+                    <span class="price-unit">/ ${p.unit}</span>
                 </div>
-                <button class="add-to-cart-btn" onclick="addToCart(products.find(p => p.id === ${product.id})); event.stopPropagation();">
+                <button class="btn-cart" onclick="event.stopPropagation();addToCart(products.find(x=>x.id===${p.id}))">
                     <i class="fas fa-cart-plus"></i> Savatga
                 </button>
             </div>
@@ -193,444 +119,237 @@ function createProductCard(product) {
     `;
 }
 
-function renderFeaturedProducts() {
-    const grid = document.getElementById('featuredProductsGrid');
-    if (!grid) return;
-    const featured = products.filter(p => p.isFeatured);
-    grid.innerHTML = featured.map(p => createProductCard(p)).join('');
-}
-
-function renderAllProducts(filterCategory = 'all', sortBy = 'default') {
-    const grid = document.getElementById('allProductsGrid');
-    if (!grid) return;
-    
-    let filtered = filterCategory === 'all' ? [...products] : products.filter(p => p.category === filterCategory);
-    
-    switch (sortBy) {
-        case 'price-asc':
-            filtered.sort((a, b) => a.price - b.price);
-            break;
-        case 'price-desc':
-            filtered.sort((a, b) => b.price - a.price);
-            break;
-        case 'name-asc':
-            filtered.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-        case 'rating-desc':
-            filtered.sort((a, b) => b.rating - a.rating);
-            break;
-    }
-    
-    grid.innerHTML = filtered.map(p => createProductCard(p)).join('');
-}
-
-function renderDiscountProducts() {
-    const grid = document.getElementById('discountProductsGrid');
-    if (!grid) return;
-    const discounted = products.filter(p => p.hasDiscount);
-    grid.innerHTML = discounted.map(p => createProductCard(p)).join('');
-}
-
+// ==========================================
+// RENDER PRODUCTS
+// ==========================================
 function renderCategories() {
-    const grid = document.getElementById('categoriesGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = categories.map(cat => `
-        <div class="category-card" style="background: ${cat.color};" onclick="navigateTo('shop'); filterProducts('${cat.slug}');">
-            <div class="category-icon">
-                <i class="fas ${cat.icon}" style="color: ${cat.iconColor}; font-size: 1.5rem;"></i>
+    let html = '';
+    categories.forEach(c => {
+        html += `
+            <div class="category-card" onclick="filterProducts('${c.filter}')">
+                <i class="fas ${c.icon}"></i>
+                <span>${c.name}</span>
             </div>
-            <span class="category-name">${cat.name}</span>
-        </div>
-    `).join('');
-    
-    // Render footer categories
-    const footerCat = document.getElementById('footerCategories');
-    if (footerCat) {
-        footerCat.innerHTML = categories.slice(0, 4).map(cat => 
-            `<li><a href="#shop" onclick="navigateTo('shop'); filterProducts('${cat.slug}');">${cat.name}</a></li>`
-        ).join('');
-    }
-    
-    // Render filter buttons
-    const filterBtns = document.getElementById('categoryFilters');
-    if (filterBtns) {
-        filterBtns.innerHTML = `
-            <button class="filter-btn active" onclick="filterProducts('all')">Barchasi</button>
-            ${categories.map(cat => `
-                <button class="filter-btn" onclick="filterProducts('${cat.slug}')">${cat.name}</button>
-            `).join('')}
         `;
-    }
+    });
+    document.getElementById('categoriesGrid').innerHTML = html;
 }
 
-function renderTestimonials() {
-    const grid = document.getElementById('testimonialsGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = testimonials.map(t => `
-        <div class="testimonial-card">
-            <div class="testimonial-header">
-                <img src="${t.avatar}" alt="${t.name}" class="testimonial-avatar">
-                <div>
-                    <div class="testimonial-name">${t.name}</div>
-                    <div class="testimonial-role">${t.role}</div>
-                </div>
-            </div>
-            <div class="testimonial-rating">
-                ${Array.from({ length: 5 }, (_, i) => 
-                    i < t.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>'
-                ).join('')}
-            </div>
-            <p class="testimonial-text">"${t.text}"</p>
-        </div>
-    `).join('');
+function renderFeatured() {
+    let featured = products.filter(p => p.featured);
+    document.getElementById('featuredProducts').innerHTML = featured.map(p => productCard(p)).join('');
 }
 
-// ============================================
-// Product Detail
-// ============================================
-function openProductDetail(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    const discountPercent = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : 0;
-    
-    document.getElementById('productDetailContent').innerHTML = `
-        <div class="product-detail">
-            <div class="detail-image">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="detail-info">
-                <div class="detail-category">${product.categoryName}</div>
-                <h1>${product.name}</h1>
-                <div class="detail-rating">
-                    ${Array.from({ length: 5 }, (_, i) => 
-                        i < Math.floor(product.rating) ? '<i class="fas fa-star"></i>' : 
-                        i < product.rating ? '<i class="fas fa-star-half-alt"></i>' : '<i class="far fa-star"></i>'
-                    ).join('')}
-                    <span>${product.rating} (${product.reviews} ta sharh)</span>
-                </div>
-                <div class="detail-price">
-                    <span class="price-current">${formatPrice(product.price)}</span>
-                    ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                    ${discountPercent > 0 ? `<span class="badge">-${discountPercent}%</span>` : ''}
-                    <span>/ ${product.unit}</span>
-                </div>
-                <p class="detail-description">${product.description}</p>
-                <div class="detail-stock">
-                    <span>Omborda qolgan: ${product.stock} ta</span>
-                    <div class="stock-bar">
-                        <div class="stock-fill" style="width: ${product.stock}%;"></div>
-                    </div>
-                </div>
-                <div class="quantity-selector">
-                    <button class="qty-btn" onclick="changeDetailQty(-1)">-</button>
-                    <input type="number" class="qty-input" id="detailQty" value="1" min="1" max="${product.stock}" readonly>
-                    <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
-                </div>
-                <div class="detail-actions">
-                    <button class="btn btn-primary" onclick="addToCartWithQty(${product.id})">
-                        <i class="fas fa-cart-plus"></i> Savatga qo'shish
-                    </button>
-                    <button class="btn btn-outline">
-                        <i class="far fa-heart"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    navigateTo('productDetail');
+function renderAll(filter = 'all') {
+    let filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+    document.getElementById('allProducts').innerHTML = filtered.map(p => productCard(p)).join('');
 }
 
-function changeDetailQty(delta) {
-    const input = document.getElementById('detailQty');
-    if (!input) return;
-    let val = parseInt(input.value) + delta;
-    if (val < 1) val = 1;
-    input.value = val;
+function renderDiscount() {
+    let discounted = products.filter(p => p.discount);
+    document.getElementById('discountProducts').innerHTML = discounted.map(p => productCard(p)).join('');
 }
 
-function addToCartWithQty(productId) {
-    const input = document.getElementById('detailQty');
-    const qty = input ? parseInt(input.value) : 1;
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    const existing = cart.find(item => item.id === productId);
-    if (existing) {
-        existing.quantity += qty;
+function renderCartItems() {
+    let container = document.getElementById('cartItems');
+    let footer = document.getElementById('cartFooter');
+    if (cart.length === 0) {
+        container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-basket"></i><p>Savat bo'sh</p></div>`;
+        footer.style.display = 'none';
     } else {
-        cart.push({ ...product, quantity: qty });
+        let html = '';
+        cart.forEach(item => {
+            html += `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <span class="cprice">${formatPrice(item.price)}</span>
+                        <div class="cart-qty">
+                            <button onclick="changeQty(${item.id}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="cart-remove" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        footer.style.display = 'block';
+        document.getElementById('cartTotal').textContent = formatPrice(cartTotal());
     }
-    saveCart();
-    showNotification(qty + ' ta ' + product.name + ' savatga qo\'shildi!');
 }
 
-// ============================================
-// Quick View Modal
-// ============================================
-function openQuickView(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
+// ==========================================
+// NAVIGATION
+// ==========================================
+function showPage(pageName) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+    let page = document.getElementById(pageName + 'Page');
+    if (page) page.classList.add('active');
+
+    let link = document.querySelector(`.nav-link[data-page="${pageName}"]`);
+    if (link) link.classList.add('active');
+
+    if (pageName === 'shop') renderAll();
+    if (pageName === 'discount') renderDiscount();
+
+    window.scrollTo(0, 0);
+}
+
+function filterProducts(filter) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    let btn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+    if (btn) btn.classList.add('active');
+    showPage('shop');
+    renderAll(filter);
+}
+
+// ==========================================
+// PRODUCT DETAIL (MODAL)
+// ==========================================
+function showDetail(id) {
+    let p = products.find(x => x.id === id);
+    if (!p) return;
     document.getElementById('quickViewContent').innerHTML = `
-        <div class="product-detail" style="padding: 1.5rem;">
-            <div class="detail-image">
-                <img src="${product.image}" alt="${product.name}" style="height: 300px;">
-            </div>
-            <div class="detail-info">
-                <div class="detail-category">${product.categoryName}</div>
-                <h1>${product.name}</h1>
-                <div class="detail-rating">
-                    ${Array.from({ length: 5 }, (_, i) => 
-                        i < Math.floor(product.rating) ? '<i class="fas fa-star"></i>' : 
-                        i < product.rating ? '<i class="fas fa-star-half-alt"></i>' : '<i class="far fa-star"></i>'
-                    ).join('')}
-                    <span>(${product.reviews})</span>
-                </div>
-                <div class="detail-price">
-                    <span class="price-current">${formatPrice(product.price)}</span>
-                    ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                </div>
-                <p class="detail-description">${product.description}</p>
-                <button class="btn btn-primary" onclick="addToCart(products.find(p => p.id === ${product.id})); closeQuickView();">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;">
+            <div><img src="${p.image}" alt="${p.name}" style="width:100%;border-radius:15px;max-height:350px;object-fit:cover;"></div>
+            <div>
+                <p style="color:#22c55e;font-weight:600;text-transform:uppercase;">${p.catName}</p>
+                <h2 style="margin:5px 0;">${p.name}</h2>
+                <div style="color:#f59e0b;margin:8px 0;">${'<i class="fas fa-star"></i>'.repeat(Math.floor(p.rating))} <span style="color:#999;">(${p.reviews})</span></div>
+                <div style="font-size:26px;font-weight:700;margin:10px 0;">${formatPrice(p.price)} ${p.oldPrice ? `<span style="font-size:16px;color:#999;text-decoration:line-through;">${formatPrice(p.oldPrice)}</span>` : ''}</div>
+                <p style="color:#666;margin:10px 0;">Yangi va sifatli mahsulot. Omborda mavjud.</p>
+                <button class="btn-primary" style="width:100%;margin-top:15px;" onclick="addToCart(products.find(x=>x.id===${p.id}));closeModal();">
                     <i class="fas fa-cart-plus"></i> Savatga qo'shish
                 </button>
             </div>
         </div>
     `;
-    
-    document.getElementById('quickViewModal').classList.add('active');
+    document.getElementById('quickViewModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
 
-function closeQuickView() {
-    document.getElementById('quickViewModal').classList.remove('active');
+function closeModal() {
+    document.getElementById('quickViewModal').classList.remove('show');
+    document.body.style.overflow = '';
 }
 
-// ============================================
-// Navigation
-// ============================================
-function navigateTo(page) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    
-    // Show target page
-    const pageMap = {
-        'home': 'homePage',
-        'shop': 'shopPage',
-        'discount': 'discountPage',
-        'productDetail': 'productDetailPage',
-        'about': 'aboutPage',
-        'contact': 'contactPage',
-    };
-    
-    const pageId = pageMap[page];
-    if (pageId) {
-        document.getElementById(pageId).classList.add('active');
-    }
-    
-    // Render page content
-    if (page === 'shop') {
-        renderAllProducts();
-        renderCategories();
-    }
-    if (page === 'discount') {
-        renderDiscountProducts();
-    }
-    
-    // Update active nav link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + page || 
-            (page === 'discount' && link.getAttribute('href') === '#discount')) {
-            link.classList.add('active');
-        }
-    });
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Close mobile menu
-    document.getElementById('mobileMenu').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
+// ==========================================
+// NOTIFICATION
+// ==========================================
+function showNotification(msg) {
+    let el = document.getElementById('notification');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(el._timeout);
+    el._timeout = setTimeout(() => el.classList.remove('show'), 2500);
 }
 
-function filterProducts(categorySlug) {
-    const sortSelect = document.getElementById('sortSelect');
-    const sortBy = sortSelect ? sortSelect.value : 'default';
-    
-    // Update active filter button
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.textContent.toLowerCase().includes(categorySlug === 'all' ? 'barchasi' : '')) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Find and activate the correct button
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    renderAllProducts(categorySlug, sortBy);
-    navigateTo('shop');
-}
-
-// ============================================
-// Cart Toggle
-// ============================================
+// ==========================================
+// CART SIDEBAR
+// ==========================================
 function toggleCart() {
-    const cart = document.getElementById('cartSidebar');
-    const overlay = document.getElementById('overlay');
-    cart.classList.toggle('active');
-    overlay.classList.toggle('active');
+    document.getElementById('cartSidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+    document.body.style.overflow = document.getElementById('cartSidebar').classList.contains('open') ? 'hidden' : '';
 }
 
-function closeAll() {
-    document.getElementById('cartSidebar').classList.remove('active');
-    document.getElementById('mobileMenu').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-    document.getElementById('quickViewModal').classList.remove('active');
+function closeCart() {
+    document.getElementById('cartSidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+    document.body.style.overflow = '';
 }
 
-// ============================================
-// Mobile Menu
-// ============================================
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('overlay');
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
-
-// ============================================
-// Hero Slider
-// ============================================
+// ==========================================
+// HERO SLIDER
+// ==========================================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.slider-dot');
 
-function initSlider() {
-    if (slides.length === 0) return;
-    
-    // Create dots
-    const dotsContainer = document.getElementById('sliderDots');
-    if (dotsContainer) {
-        dotsContainer.innerHTML = slides.map((_, i) => 
-            `<span class="slider-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></span>`
-        ).join('');
-    }
-    
-    // Auto play
+function showSlide(index) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    currentSlide = index;
+}
+
+if (slides.length > 0) {
     setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
-        updateSlider();
-    }, 4000);
-}
+        showSlide(currentSlide);
+    }, 3500);
 
-function goToSlide(index) {
-    currentSlide = index;
-    updateSlider();
-}
-
-function updateSlider() {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentSlide);
-    });
-    
-    document.querySelectorAll('.slider-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => showSlide(i));
     });
 }
 
-// ============================================
-// Promo Timer
-// ============================================
-function initPromoTimer() {
-    let hours = 24;
-    let minutes = 0;
-    let seconds = 0;
-    
-    setInterval(() => {
-        if (seconds > 0) {
-            seconds--;
-        } else if (minutes > 0) {
-            minutes--;
-            seconds = 59;
-        } else if (hours > 0) {
-            hours--;
-            minutes = 59;
-            seconds = 59;
-        }
-        
-        const hoursEl = document.getElementById('timerHours');
-        const minutesEl = document.getElementById('timerMinutes');
-        const secondsEl = document.getElementById('timerSeconds');
-        
-        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-    }, 1000);
-}
+// ==========================================
+// MOBILE MENU
+// ==========================================
+document.querySelector('.menu-toggle-btn').addEventListener('click', function() {
+    document.getElementById('mainNav').classList.toggle('open');
+});
 
-// ============================================
-// Search
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length > 1) {
-                const results = products.filter(p => 
-                    p.name.toLowerCase().includes(query) || 
-                    p.categoryName.toLowerCase().includes(query)
-                );
-                navigateTo('shop');
-                const grid = document.getElementById('allProductsGrid');
-                if (grid) {
-                    grid.innerHTML = results.map(p => createProductCard(p)).join('');
-                }
-            } else if (query.length === 0) {
-                renderAllProducts();
-            }
-        });
-    }
-    
-    // Initialize all components
-    updateCartUI();
-    renderFeaturedProducts();
-    renderCategories();
-    renderTestimonials();
-    initSlider();
-    initPromoTimer();
-    
-    // Close modals on escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeAll();
-        }
-    });
-    
-    // Handle hash navigation
-    const hash = window.location.hash.replace('#', '');
-    if (hash && ['home', 'shop', 'discount', 'about', 'contact'].includes(hash)) {
-        navigateTo(hash);
+// ==========================================
+// SEARCH
+// ==========================================
+document.getElementById('searchInput').addEventListener('input', function() {
+    let q = this.value.toLowerCase();
+    if (q.length > 1) {
+        let results = products.filter(p => p.name.toLowerCase().includes(q) || p.catName.toLowerCase().includes(q));
+        showPage('shop');
+        document.getElementById('allProducts').innerHTML = results.map(p => productCard(p)).join('');
+    } else if (q.length === 0) {
+        renderAll();
     }
 });
 
-// Handle window popstate
-window.addEventListener('popstate', () => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash) {
-        navigateTo(hash);
+// ==========================================
+// EVENT LISTENERS
+// ==========================================
+document.querySelector('.cart-toggle-btn').addEventListener('click', toggleCart);
+document.querySelector('.cart-close-btn').addEventListener('click', closeCart);
+document.getElementById('overlay').addEventListener('click', function() {
+    closeCart();
+    closeModal();
+});
+document.querySelector('.modal-close').addEventListener('click', closeModal);
+document.getElementById('quickViewModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        filterProducts(this.dataset.filter);
+    });
+});
+
+// Nav links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage(this.dataset.page);
+    });
+});
+
+// ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeCart();
+        closeModal();
     }
 });
 
-// Update hash on navigation
-const originalNavigateTo = navigateTo;
-navigateTo = function(page) {
-    window.location.hash = page;
-    originalNavigateTo(page);
-};
+// ==========================================
+// INIT
+// ==========================================
+renderCategories();
+renderFeatured();
+renderAll();
+updateCartUI();
