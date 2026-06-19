@@ -1,559 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choice Market - Quality Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ustalar Dukoni — Professional mebel ustaxonasi</title>
+  
+  <!-- TailwindCSS CDN (faqat grid va flex uchun) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tashqi CSS fayl -->
+  <link rel="stylesheet" href="./assets/style.css" />
 </head>
-<body class="light-mode">
+<body>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-left">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Delivery across Tashkent city</span>
-                <span class="top-divider">|</span>
-                <i class="fas fa-clock"></i>
-                <span>24/7 Service</span>
-            </div>
-            <div class="top-bar-right">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                <span class="top-divider">|</span>
-                <i class="fas fa-phone"></i>
-                <span>+998 90 123 45 67</span>
-            </div>
-        </div>
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">🔨</span>
+        <span class="logo-text">Ustalar <span>Dukoni</span></span>
+      </div>
+      
+      <div class="desktop-menu">
+        <a href="#bosh">🏠 Bosh</a>
+        <a href="#xizmatlar">🛠 Xizmatlar</a>
+        <a href="#loyihalar">📐 Loyihalar</a>
+        <a href="#ustalar">👨‍🔧 Ustalar</a>
+        <a href="#biz-haqimizda">ℹ️ Biz haqimizda</a>
+        <a href="#aloqa" class="btn-nav">📞 Aloqa</a>
+      </div>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Rejimni o'zgartirish">
+          🌙
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Menyu">
+          ☰
+        </button>
+      </div>
     </div>
+    
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#bosh">🏠 Bosh</a>
+      <a href="#xizmatlar">🛠 Xizmatlar</a>
+      <a href="#loyihalar">📐 Loyihalar</a>
+      <a href="#ustalar">👨‍🔧 Ustalar</a>
+      <a href="#biz-haqimizda">ℹ️ Biz haqimizda</a>
+      <a href="#aloqa" class="btn-mobile">📞 Aloqa</a>
+    </div>
+  </nav>
 
-    <!-- HEADER -->
-    <header class="header" id="header">
-        <div class="container">
-            <a href="#" class="logo" onclick="showPage('home')">
-                <div class="logo-icon">
-                    <i class="fas fa-basket-shopping"></i>
-                </div>
-                <div class="logo-text">
-                    <span>Choice</span>
-                    <span>Market</span>
-                </div>
-            </a>
-
-            <div class="search-wrapper">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="What are you looking for?">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-
-            <div class="header-actions">
-                <button class="header-btn dark-mode-btn" onclick="toggleDarkMode()" title="Dark/Light Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="header-btn" title="Wishlist">
-                    <i class="far fa-heart"></i>
-                    <span class="btn-badge">3</span>
-                </button>
-                <button class="header-btn" title="Profile">
-                    <i class="far fa-user"></i>
-                </button>
-                <button class="header-btn cart-btn" title="Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="btn-badge cart-badge" id="cartCount">0</span>
-                </button>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+  <!-- ====== HERO ====== -->
+  <section id="bosh" class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge floating">
+          <span>⭐</span> 20+ yillik tajriba
         </div>
-    </header>
-
-    <!-- NAVIGATION -->
-    <nav class="main-nav" id="mainNav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="#" class="nav-link active" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('shop')"><i class="fas fa-store"></i> Shop</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('discount')"><i class="fas fa-tag"></i> Discounts <span class="nav-badge">Hot</span></a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('about')"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
+        <h1 class="glitch-text">
+          Mohir <span>ustalar</span> <br />qo'lida jonlanadi
+        </h1>
+        <p class="typing-text">
+          ✨ Har bir buyurtmani san'at asariga aylantiramiz. Tabiiy yog'och, zamonaviy dizayn va yuqori sifat.
+        </p>
+        <div class="hero-buttons">
+          <a href="#aloqa" class="btn-primary pulse-btn">
+            ✏️ Buyurtma berish
+          </a>
+          <a href="#loyihalar" class="btn-secondary">
+            🖼 Loyihalar
+          </a>
         </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-basket-shopping"></i></div>
-                <div class="logo-text"><span>Choice</span><span>Market</span></div>
-            </div>
-            <button class="mobile-close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
+        <div class="hero-stats">
+          <div class="counter-item">
+            <span class="counter" data-target="20">0</span><span>+</span>
+            <p>Yillik tajriba</p>
+          </div>
+          <div class="counter-item">
+            <span class="counter" data-target="150">0</span><span>+</span>
+            <p>Mijozlar</p>
+          </div>
+          <div class="counter-item">
+            <span class="counter" data-target="300">0</span><span>+</span>
+            <p>Loyihalar</p>
+          </div>
         </div>
-        <ul class="mobile-nav-list">
-            <li><a href="#" onclick="showPage('home');toggleMobileMenu();"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#" onclick="showPage('shop');toggleMobileMenu();"><i class="fas fa-store"></i> Shop</a></li>
-            <li><a href="#" onclick="showPage('discount');toggleMobileMenu();"><i class="fas fa-tag"></i> Discounts</a></li>
-            <li><a href="#" onclick="showPage('about');toggleMobileMenu();"><i class="fas fa-info-circle"></i> About Us</a></li>
-            <li><a href="#" onclick="showPage('contact');toggleMobileMenu();"><i class="fas fa-envelope"></i> Contact</a></li>
+      </div>
+      <div class="hero-image">
+        <div class="hero-circle rotate-slow">
+          <span>🪑</span>
+          <span class="hero-badge-circle pulse">⭐ Premium</span>
+        </div>
+        <div class="floating-shapes">
+          <span class="shape shape1">🔧</span>
+          <span class="shape shape2">🪚</span>
+          <span class="shape shape3">📏</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== XIZMATLAR ====== -->
+  <section id="xizmatlar" class="services">
+    <div class="services-container">
+      <div class="services-header">
+        <p class="section-badge">🛠 Xizmatlar</p>
+        <h2>Biz nimalarni <span>qilamiz</span></h2>
+        <p>🏆 Ustaxonamizda har bir buyurtma individual yondashuv va yuqori sifat bilan bajariladi.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card hover-lift">
+          <div class="service-icon bounce-icon">🛋</div>
+          <h3>Mebel ishlab chiqarish</h3>
+          <p>Shkaflar, stollar, stullar va eksklyuziv interyer buyumlari.</p>
+          <div class="service-hover-line"></div>
+        </div>
+        <div class="service-card hover-lift">
+          <div class="service-icon bounce-icon">🎨</div>
+          <h3>Restavratsiya</h3>
+          <p>Eski mebellarni yangilash, laklash va qayta tiklash.</p>
+          <div class="service-hover-line"></div>
+        </div>
+        <div class="service-card hover-lift">
+          <div class="service-icon bounce-icon">📐</div>
+          <h3>Buyurtma asosida</h3>
+          <p>Sizning chizmangiz yoki g'oyangiz bo'yicha to'liq ishlab chiqarish.</p>
+          <div class="service-hover-line"></div>
+        </div>
+        <div class="service-card hover-lift">
+          <div class="service-icon bounce-icon">🚚</div>
+          <h3>Yetkazib berish va o'rnatish</h3>
+          <p>Mahsulotlarni manzilga yetkazish va o'rnatish xizmati.</p>
+          <div class="service-hover-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LOYIHALAR ====== -->
+  <section id="loyihalar" class="projects">
+    <div class="projects-container">
+      <div class="projects-header">
+        <p class="section-badge">📐 Loyihalar</p>
+        <h2>So'nggi <span>ishlarimiz</span></h2>
+        <p>🌟 Bizning qo'limizdan chiqqan eng yaxshi namunalar.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card hover-lift">
+          <div class="project-img rotate-hover">🏛</div>
+          <h3>Yog'och shkaf</h3>
+          <p>Tabiiy eman yog'ochidan tayyorlangan klassik shkaf.</p>
+          <div class="project-tag">⭐ Eng mashhur</div>
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-card hover-lift">
+          <div class="project-img rotate-hover">🪑</div>
+          <h3>Stullar to'plami</h3>
+          <p>6 ta o'rindiqli ovqat xonasi stullari.</p>
+          <div class="project-tag">🔥 Yangi</div>
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-card hover-lift">
+          <div class="project-img rotate-hover">🪵</div>
+          <h3>Ovqat stoli</h3>
+          <p>Katta oilaviy dasturxon uchun mo'ljallangan stol.</p>
+          <div class="project-tag">✨ Premium</div>
+          <div class="project-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== USTALAR ====== -->
+  <section id="ustalar" class="masters">
+    <div class="masters-container">
+      <div class="masters-header">
+        <p class="section-badge">👨‍🔧 Ustalarimiz</p>
+        <h2>Bizning <span>mutaxassislar</span></h2>
+        <p>🏅 Tajribali va malakali ustalar jamoasi.</p>
+      </div>
+      <div class="masters-grid">
+        <div class="master-card hover-lift">
+          <div class="master-avatar pulse-avatar">👨‍🦰</div>
+          <h3>Alisher Qodirov</h3>
+          <p class="master-role">🔨 Bosh usta</p>
+          <p class="master-desc">15 yillik tajriba, yog'ochsozlik bo'yicha mutaxassis</p>
+          <div class="master-social">
+            <a href="#">📱</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+        <div class="master-card hover-lift">
+          <div class="master-avatar pulse-avatar">👨‍🦳</div>
+          <h3>Jamshid Karimov</h3>
+          <p class="master-role">🎨 Dizayner</p>
+          <p class="master-desc">10 yillik tajriba, zamonaviy interyer dizayni</p>
+          <div class="master-social">
+            <a href="#">📱</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+        <div class="master-card hover-lift">
+          <div class="master-avatar pulse-avatar">👨‍🦱</div>
+          <h3>Bobur Toshmatov</h3>
+          <p class="master-role">🪚 Restavrator</p>
+          <p class="master-desc">12 yillik tajriba, antiqa mebellarni tiklash</p>
+          <div class="master-social">
+            <a href="#">📱</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BIZ HAQIMIZDA ====== -->
+  <section id="biz-haqimizda" class="about">
+    <div class="about-container">
+      <div class="about-text">
+        <p class="section-badge">ℹ️ Biz haqimizda</p>
+        <h2>Nega <span>Ustalar Dukoni</span>?</h2>
+        <p>💪 Biz 20 yildan ortiq vaqt davomida mebel sohasida xizmat qilamiz. Har bir buyurtmachiga individual yondashamiz va sifatni kafolatlaymiz.</p>
+        <ul>
+          <li>✅ Yuqori sifatli yog'och materiallar</li>
+          <li>✅ Zamonaviy dizayn va an'anaviy uslublar</li>
+          <li>✅ 1 yillik bepul xizmat ko'rsatish</li>
+          <li>✅ 100% mijozlar mamnuniyati</li>
         </ul>
-        <div class="mobile-dark-toggle">
-            <button onclick="toggleDarkMode()">
-                <i class="fas fa-moon"></i> <span>Dark Mode</span>
-            </button>
+        <div class="about-badges">
+          <span>🏅 Sifat sertifikati</span>
+          <span>🌟 5 yulduzli reyting</span>
         </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="counter" data-target="20">0</span><span>+</span>
+          <p>Yillik tajriba</p>
+        </div>
+        <div class="stat-item">
+          <span class="counter" data-target="150">0</span><span>+</span>
+          <p>Mijozlar</p>
+        </div>
+        <div class="stat-item">
+          <span class="counter" data-target="300">0</span><span>+</span>
+          <p>Loyihalar</p>
+        </div>
+        <div class="stat-item">
+          <span>100%</span>
+          <p>Mamnuniyat</p>
+        </div>
+      </div>
     </div>
-    <div class="overlay-bg" id="overlayBg" onclick="closeAll()"></div>
+  </section>
 
-    <!-- MAIN CONTENT -->
-    <main>
-
-        <!-- HOME PAGE -->
-        <div id="homePage" class="page active">
-            <!-- HERO -->
-            <section class="hero-section">
-                <div class="container">
-                    <div class="hero-grid">
-                        <div class="hero-main">
-                            <div class="hero-slider">
-                                <div class="hero-slide active slide-1">
-                                    <div class="slide-content">
-                                        <span class="slide-badge">Special Offer</span>
-                                        <h2>New Year <span>30%</span> Discount</h2>
-                                        <p>On all fruits and vegetables</p>
-                                        <button class="btn btn-light" onclick="showPage('discount')">Shop Now <i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                    <div class="slide-image">
-                                        <img src="https://pngimg.com/d/grocery_PNG46.png" alt="products">
-                                    </div>
-                                </div>
-                                <div class="hero-slide slide-2">
-                                    <div class="slide-content">
-                                        <span class="slide-badge">New</span>
-                                        <h2>Organic <span>Products</span></h2>
-                                        <p>Directly from farmers</p>
-                                        <button class="btn btn-light" onclick="showPage('shop')">View <i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                    <div class="slide-image">
-                                        <img src="https://pngimg.com/d/grocery_PNG47.png" alt="products">
-                                    </div>
-                                </div>
-                                <div class="hero-slide slide-3">
-                                    <div class="slide-content">
-                                        <span class="slide-badge">Fast</span>
-                                        <h2>Delivery in <span>2 Hours</span></h2>
-                                        <p>Throughout Tashkent city</p>
-                                        <button class="btn btn-light" onclick="showPage('shop')">Order <i class="fas fa-arrow-right"></i></button>
-                                    </div>
-                                    <div class="slide-image">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/2332/2332770.png" alt="delivery">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-controls">
-                                <button class="slider-prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
-                                <div class="slider-dots">
-                                    <span class="dot active" onclick="goToSlide(0)"></span>
-                                    <span class="dot" onclick="goToSlide(1)"></span>
-                                    <span class="dot" onclick="goToSlide(2)"></span>
-                                </div>
-                                <button class="slider-next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="hero-sidebar">
-                            <div class="hero-card card-1" onclick="showPage('discount')">
-                                <div class="hero-card-content">
-                                    <h4>Discounts</h4>
-                                    <p>Up to 50%</p>
-                                </div>
-                                <i class="fas fa-percent"></i>
-                            </div>
-                            <div class="hero-card card-2" onclick="showPage('shop')">
-                                <div class="hero-card-content">
-                                    <h4>New Products</h4>
-                                    <p>Every week</p>
-                                </div>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FEATURES -->
-            <section class="features-section">
-                <div class="container">
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
-                            <div>
-                                <h4>Fast Delivery</h4>
-                                <p>At your doorstep within 2 hours</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
-                            <div>
-                                <h4>Quality Guarantee</h4>
-                                <p>100% natural products</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                            <div>
-                                <h4>24/7 Support</h4>
-                                <p>Always in touch</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
-                            <div>
-                                <h4>Easy Payment</h4>
-                                <p>Cash, Card, Click</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CATEGORIES -->
-            <section class="categories-section">
-                <div class="container">
-                    <div class="section-header">
-                        <div>
-                            <h2 class="section-title">Categories</h2>
-                            <p class="section-subtitle">Choose the section you need</p>
-                        </div>
-                        <button class="btn btn-outline" onclick="showPage('shop')">View All <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                    <div class="categories-grid" id="categoriesGrid"></div>
-                </div>
-            </section>
-
-            <!-- FEATURED PRODUCTS -->
-            <section class="products-section">
-                <div class="container">
-                    <div class="section-header">
-                        <div>
-                            <h2 class="section-title">Featured Products</h2>
-                            <p class="section-subtitle">Most popular products chosen by customers</p>
-                        </div>
-                    </div>
-                    <div class="products-grid" id="featuredProducts"></div>
-                </div>
-            </section>
-
-            <!-- PROMO BANNER -->
-            <section class="promo-section">
-                <div class="container">
-                    <div class="promo-banner">
-                        <div class="promo-content">
-                            <span class="promo-badge">Limited Offer</span>
-                            <h2><span>25% Off</span> Your First Order</h2>
-                            <p>Sign up and get a special discount on your first purchase</p>
-                            <div class="promo-timer">
-                                <div class="timer-block">
-                                    <span class="timer-num" id="days">03</span>
-                                    <span class="timer-label">Days</span>
-                                </div>
-                                <div class="timer-block">
-                                    <span class="timer-num" id="hours">12</span>
-                                    <span class="timer-label">Hours</span>
-                                </div>
-                                <div class="timer-block">
-                                    <span class="timer-num" id="minutes">45</span>
-                                    <span class="timer-label">Minutes</span>
-                                </div>
-                                <div class="timer-block">
-                                    <span class="timer-num" id="seconds">30</span>
-                                    <span class="timer-label">Seconds</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary">Sign Up</button>
-                        </div>
-                        <div class="promo-image">
-                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600" alt="Promo">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TESTIMONIALS -->
-            <section class="testimonials-section">
-                <div class="container">
-                    <div class="section-header text-center">
-                        <div>
-                            <h2 class="section-title">Customer Reviews</h2>
-                            <p class="section-subtitle">What they say about us</p>
-                        </div>
-                    </div>
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Choice Market is my favorite store! Products are always fresh and high quality. Delivery is very fast."</p>
-                            <div class="testimonial-author">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="User">
-                                <div>
-                                    <h5>Dilnoza Karimova</h5>
-                                    <span>Regular Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"The ordering process is very convenient. The quality of fruits and vegetables is excellent. I recommend to everyone!"</p>
-                            <div class="testimonial-author">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="User">
-                                <div>
-                                    <h5>Akbar Aliyev</h5>
-                                    <span>Regular Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"My order yesterday arrived within 2 hours. Everything was clean and well packaged. Thank you!"</p>
-                            <div class="testimonial-author">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="User">
-                                <div>
-                                    <h5>Madina Usmonova</h5>
-                                    <span>New Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <!-- ====== ALOQA ====== -->
+  <section id="aloqa" class="contact">
+    <div class="contact-container">
+      <div class="contact-header">
+        <p class="section-badge">📞 Aloqa</p>
+        <h2>Biz bilan <span>bog'laning</span></h2>
+        <p>💬 Har qanday savol yoki buyurtma uchun bizga yozing.</p>
+      </div>
+      <div class="contact-wrapper">
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label>👤 Ismingiz</label>
+            <input type="text" placeholder="Ismingizni kiriting" required />
+          </div>
+          <div class="form-group">
+            <label>📧 Email manzil</label>
+            <input type="email" placeholder="Email manzilingiz" required />
+          </div>
+          <div class="form-group">
+            <label>📝 Xabar</label>
+            <textarea rows="4" placeholder="Xabaringizni yozing..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary pulse-btn">
+            📨 Yuborish
+          </button>
+        </form>
+        <div class="contact-info">
+          <div><span>📍</span> Toshkent, Chilonzor tumani</div>
+          <div><span>📞</span> +998 90 123 45 67</div>
+          <div><span>📧</span> info@ustalardukoni.uz</div>
+          <div><span>🕐</span> Dushanba — Shanba: 9:00 - 18:00</div>
+          <div class="contact-social">
+            <a href="#" class="social-link">📱</a>
+            <a href="#" class="social-link">📸</a>
+            <a href="#" class="social-link">▶️</a>
+            <a href="#" class="social-link">👍</a>
+          </div>
         </div>
-
-        <!-- SHOP PAGE -->
-        <div id="shopPage" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Shop</h1>
-                    <p class="page-desc">Browse and choose all products</p>
-                </div>
-                <div class="shop-toolbar">
-                    <div class="filter-bar">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="fruits">Fruits & Vegetables</button>
-                        <button class="filter-btn" data-filter="dairy">Dairy Products</button>
-                        <button class="filter-btn" data-filter="meat">Meat & Fish</button>
-                        <button class="filter-btn" data-filter="bakery">Bakery</button>
-                        <button class="filter-btn" data-filter="drinks">Beverages</button>
-                        <button class="filter-btn" data-filter="sweets">Sweets</button>
-                    </div>
-                    <div class="sort-box">
-                        <select id="sortSelect" onchange="applySort()">
-                            <option value="default">Sort By</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                            <option value="name">Name</option>
-                            <option value="rating">Rating</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="products-grid" id="allProducts"></div>
-            </div>
-        </div>
-
-        <!-- DISCOUNT PAGE -->
-        <div id="discountPage" class="page">
-            <div class="container">
-                <div class="page-header discount-header">
-                    <h1 class="page-title">Discounts</h1>
-                    <p class="page-desc">Products at the best prices</p>
-                </div>
-                <div class="products-grid" id="discountProducts"></div>
-            </div>
-        </div>
-
-        <!-- ABOUT PAGE -->
-        <div id="aboutPage" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">About Us</h1>
-                </div>
-                <div class="about-content">
-                    <div class="about-grid">
-                        <div class="about-text">
-                            <h2>Choice Market - World of <span>Quality</span> Products</h2>
-                            <p>We have been operating in the Uzbekistan market since 2023, delivering the highest quality and freshest food products to our customers.</p>
-                            <p>Our goal is to provide every family with quality products at affordable prices with fast delivery service.</p>
-                            <div class="about-stats">
-                                <div class="stat-item">
-                                    <span class="stat-num">10,000+</span>
-                                    <span class="stat-lbl">Happy Customers</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-num">500+</span>
-                                    <span class="stat-lbl">Product Types</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-num">24/7</span>
-                                    <span class="stat-lbl">Service</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="about-images">
-                            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500" alt="Store" class="about-img-main">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300" alt="Products" class="about-img-sub">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CONTACT PAGE -->
-        <div id="contactPage" class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Contact Us</h1>
-                    <p class="page-desc">Have a question? Get in touch with us</p>
-                </div>
-                <div class="contact-content">
-                    <div class="contact-grid">
-                        <div class="contact-info-cards">
-                            <div class="contact-info-card">
-                                <div class="ci-icon"><i class="fas fa-phone"></i></div>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <p>+998 90 123 45 67</p>
-                                    <p>+998 90 765 43 21</p>
-                                </div>
-                            </div>
-                            <div class="contact-info-card">
-                                <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>info@choicemarket.uz</p>
-                                    <p>support@choicemarket.uz</p>
-                                </div>
-                            </div>
-                            <div class="contact-info-card">
-                                <div class="ci-icon"><i class="fas fa-location-dot"></i></div>
-                                <div>
-                                    <h4>Address</h4>
-                                    <p>Tashkent city, Mirzo Ulugbek district,</p>
-                                    <p>Mustaqillik street, 45</p>
-                                </div>
-                            </div>
-                        </div>
-                        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! We will contact you soon.');">
-                            <div class="form-row">
-                                <input type="text" placeholder="Your Name" required>
-                                <input type="email" placeholder="Your Email" required>
-                            </div>
-                            <input type="text" placeholder="Subject">
-                            <textarea placeholder="Write your message..." rows="5" required></textarea>
-                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- CART SIDEBAR -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-sidebar-header">
-            <h3><i class="fas fa-shopping-bag"></i> Cart</h3>
-            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <div class="cart-empty-state">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Your cart is currently empty</p>
-                <button class="btn btn-outline" onclick="toggleCart();showPage('shop');">Start Shopping</button>
-            </div>
-        </div>
-        <div class="cart-sidebar-footer" id="cartFooter" style="display:none;">
-            <div class="cart-summary">
-                <div class="cart-summary-row">
-                    <span>Total:</span>
-                    <span class="cart-total-price" id="cartTotal">0 sum</span>
-                </div>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="alert('Order accepted!');">Place Order</button>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- QUICK VIEW MODAL -->
-    <div class="quickview-modal" id="quickViewModal">
-        <div class="quickview-content">
-            <button class="quickview-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
-            <div id="quickViewInner"></div>
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+          <span>🔨</span> Ustalar <span>Dukoni</span>
         </div>
+        <p>🏆 Mebel ustaxonasi — sifat va ishonch.</p>
+        <div class="footer-social">
+          <a href="#">📱</a>
+          <a href="#">📸</a>
+          <a href="#">▶️</a>
+        </div>
+      </div>
+      <div>
+        <h4>📑 Menyu</h4>
+        <a href="#bosh">🏠 Bosh</a>
+        <a href="#xizmatlar">🛠 Xizmatlar</a>
+        <a href="#loyihalar">📐 Loyihalar</a>
+        <a href="#ustalar">👨‍🔧 Ustalar</a>
+        <a href="#biz-haqimizda">ℹ️ Biz haqimizda</a>
+      </div>
+      <div>
+        <h4>📞 Bog'lanish</h4>
+        <a href="tel:+998901234567">📞 +998 90 123 45 67</a>
+        <a href="mailto:info@ustalardukoni.uz">📧 info@ustalardukoni.uz</a>
+        <a href="#">📍 Toshkent, Chilonzor</a>
+      </div>
     </div>
+    <div class="footer-bottom">
+      © 2026 Ustalar Dukoni. Barcha huquqlar himoyalangan. 🛡️
+    </div>
+  </footer>
 
-    <!-- TOAST NOTIFICATION -->
-    <div class="toast" id="toast"></div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col footer-about">
-                    <div class="logo" style="margin-bottom:20px;">
-                        <div class="logo-icon"><i class="fas fa-basket-shopping"></i></div>
-                        <div class="logo-text"><span>Choice</span><span>Market</span></div>
-                    </div>
-                    <p>An online grocery store delivering fresh and quality products at affordable prices.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#" onclick="showPage('home')"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#" onclick="showPage('shop')"><i class="fas fa-chevron-right"></i> Shop</a></li>
-                        <li><a href="#" onclick="showPage('discount')"><i class="fas fa-chevron-right"></i> Discounts</a></li>
-                        <li><a href="#" onclick="showPage('about')"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Categories</h4>
-                    <ul>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('fruits');"><i class="fas fa-chevron-right"></i> Fruits & Vegetables</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('dairy');"><i class="fas fa-chevron-right"></i> Dairy Products</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('meat');"><i class="fas fa-chevron-right"></i> Meat & Fish</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('drinks');"><i class="fas fa-chevron-right"></i> Beverages</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul class="footer-contact-list">
-                        <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
-                        <li><i class="fas fa-envelope"></i> Iqbolshoh@gmail.com</li>
-                        <li><i class="fas fa-location-dot"></i> Samarkand., Uzbekistan</li>
-                        <li><i class="fas fa-clock"></i> We work 24/7</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Choice Market. All rights reserved.</p>
-                <p>Designed with <i class="fas fa-heart"></i> for you</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./assets/script.js"></script>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
