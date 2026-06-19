@@ -1,34 +1,67 @@
 // =============================================
-// CHOICE MARKET - DATA
+// CHOICE MARKET - MAIN JAVASCRIPT
 // =============================================
 
+// ========== DATA ==========
 var categories = [
-    { name: 'Meva va Sabzavotlar', icon: 'fa-apple-whole', filter: 'fruits' },
-    { name: 'Sut Mahsulotlari', icon: 'fa-cow', filter: 'dairy' },
-    { name: 'Go\'sht va Baliq', icon: 'fa-drumstick-bite', filter: 'meat' },
-    { name: 'Non Mahsulotlari', icon: 'fa-bread-slice', filter: 'bakery' },
-    { name: 'Ichimliklar', icon: 'fa-glass-water', filter: 'drinks' },
-    { name: 'Shirinliklar', icon: 'fa-cake-candles', filter: 'sweets' }
+    { name: 'Fruits & Vegetables', icon: 'fa-apple-whole', filter: 'fruits' },
+    { name: 'Dairy Products', icon: 'fa-cow', filter: 'dairy' },
+    { name: 'Meat & Fish', icon: 'fa-drumstick-bite', filter: 'meat' },
+    { name: 'Bakery', icon: 'fa-bread-slice', filter: 'bakery' },
+    { name: 'Beverages', icon: 'fa-glass-water', filter: 'drinks' },
+    { name: 'Sweets', icon: 'fa-cake-candles', filter: 'sweets' }
 ];
 
 var products = [
-    { id: 1, name: 'Olma Golden', category: 'fruits', catName: 'Meva va Sabzavotlar', price: 25000, oldPrice: 30000, unit: 'kg', image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400', rating: 4.8, reviews: 124, badge: 'Chegirma', badgeColor: '#ef4444', featured: true, discount: true },
-    { id: 2, name: 'Banan', category: 'fruits', catName: 'Meva va Sabzavotlar', price: 18000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400', rating: 4.6, reviews: 89, badge: null, featured: true, discount: false },
-    { id: 3, name: 'Sut 3.2%', category: 'dairy', catName: 'Sut Mahsulotlari', price: 12000, oldPrice: 14000, unit: '1L', image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400', rating: 4.9, reviews: 256, badge: 'Aksiya', badgeColor: '#f97316', featured: false, discount: true },
-    { id: 4, name: 'Tovuq Go\'shti (File)', category: 'meat', catName: 'Go\'sht va Baliq', price: 55000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400', rating: 4.7, reviews: 178, badge: 'Yangi', badgeColor: '#22c55e', featured: true, discount: false },
-    { id: 5, name: 'Non (Oq)', category: 'bakery', catName: 'Non Mahsulotlari', price: 5000, oldPrice: null, unit: 'dona', image: 'https://images.unsplash.com/photo-1549931319-a545799f3a44?w=400', rating: 4.5, reviews: 412, badge: null, featured: false, discount: false },
-    { id: 6, name: 'Coca-Cola 1.5L', category: 'drinks', catName: 'Ichimliklar', price: 10000, oldPrice: null, unit: '1.5L', image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400', rating: 4.4, reviews: 567, badge: null, featured: false, discount: false },
-    { id: 7, name: 'Shokoladli Tort', category: 'sweets', catName: 'Shirinliklar', price: 85000, oldPrice: 95000, unit: 'dona', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400', rating: 4.9, reviews: 89, badge: 'Premium', badgeColor: '#a855f7', featured: true, discount: true },
-    { id: 8, name: 'Yong\'oq (Grechka)', category: 'fruits', catName: 'Meva va Sabzavotlar', price: 65000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571506452821-d7b3e7a5f4e0?w=400', rating: 4.7, reviews: 67, badge: null, featured: false, discount: false },
-    { id: 9, name: 'Muzqaymoq Plombir', category: 'dairy', catName: 'Sut Mahsulotlari', price: 15000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400', rating: 4.8, reviews: 234, badge: 'Xit', badgeColor: '#3b82f6', featured: false, discount: false },
-    { id: 10, name: 'Pomidor (Cherry)', category: 'fruits', catName: 'Meva va Sabzavotlar', price: 35000, oldPrice: 40000, unit: 'kg', image: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400', rating: 4.6, reviews: 98, badge: null, featured: false, discount: true },
-    { id: 11, name: 'Qaymoq 20%', category: 'dairy', catName: 'Sut Mahsulotlari', price: 22000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400', rating: 4.5, reviews: 145, badge: null, featured: false, discount: false },
-    { id: 12, name: 'Losos (Somon Baliq)', category: 'meat', catName: 'Go\'sht va Baliq', price: 120000, oldPrice: 135000, unit: 'kg', image: 'https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400', rating: 4.9, reviews: 56, badge: 'Chegirma', badgeColor: '#f97316', featured: true, discount: true }
+    { id: 1, name: 'Golden Apples', category: 'fruits', catName: 'Fruits & Vegetables', price: 25000, oldPrice: 30000, unit: 'kg', image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400', rating: 4.8, reviews: 124, badge: 'Sale', badgeColor: '#ef4444', featured: true, discount: true },
+    { id: 2, name: 'Bananas', category: 'fruits', catName: 'Fruits & Vegetables', price: 18000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400', rating: 4.6, reviews: 89, badge: null, featured: true, discount: false },
+    { id: 3, name: 'Milk 3.2%', category: 'dairy', catName: 'Dairy Products', price: 12000, oldPrice: 14000, unit: '1L', image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400', rating: 4.9, reviews: 256, badge: 'Deal', badgeColor: '#f97316', featured: false, discount: true },
+    { id: 4, name: 'Chicken Fillet', category: 'meat', catName: 'Meat & Fish', price: 55000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400', rating: 4.7, reviews: 178, badge: 'Fresh', badgeColor: '#22c55e', featured: true, discount: false },
+    { id: 5, name: 'White Bread', category: 'bakery', catName: 'Bakery', price: 5000, oldPrice: null, unit: 'piece', image: 'https://images.unsplash.com/photo-1549931319-a545799f3a44?w=400', rating: 4.5, reviews: 412, badge: null, featured: false, discount: false },
+    { id: 6, name: 'Coca-Cola 1.5L', category: 'drinks', catName: 'Beverages', price: 10000, oldPrice: null, unit: '1.5L', image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400', rating: 4.4, reviews: 567, badge: null, featured: false, discount: false },
+    { id: 7, name: 'Chocolate Cake', category: 'sweets', catName: 'Sweets', price: 85000, oldPrice: 95000, unit: 'piece', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400', rating: 4.9, reviews: 89, badge: 'Premium', badgeColor: '#a855f7', featured: true, discount: true },
+    { id: 8, name: 'Walnuts', category: 'fruits', catName: 'Fruits & Vegetables', price: 65000, oldPrice: null, unit: 'kg', image: 'https://images.unsplash.com/photo-1571506452821-d7b3e7a5f4e0?w=400', rating: 4.7, reviews: 67, badge: null, featured: false, discount: false },
+    { id: 9, name: 'Ice Cream', category: 'dairy', catName: 'Dairy Products', price: 15000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400', rating: 4.8, reviews: 234, badge: 'Hit', badgeColor: '#3b82f6', featured: false, discount: false },
+    { id: 10, name: 'Cherry Tomatoes', category: 'fruits', catName: 'Fruits & Vegetables', price: 35000, oldPrice: 40000, unit: 'kg', image: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400', rating: 4.6, reviews: 98, badge: null, featured: false, discount: true },
+    { id: 11, name: 'Cream 20%', category: 'dairy', catName: 'Dairy Products', price: 22000, oldPrice: null, unit: '500ml', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400', rating: 4.5, reviews: 145, badge: null, featured: false, discount: false },
+    { id: 12, name: 'Salmon Fish', category: 'meat', catName: 'Meat & Fish', price: 120000, oldPrice: 135000, unit: 'kg', image: 'https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400', rating: 4.9, reviews: 56, badge: 'Sale', badgeColor: '#f97316', featured: true, discount: true }
 ];
 
-// =============================================
-// CART
-// =============================================
+// ========== DARK MODE ==========
+function toggleDarkMode() {
+    var body = document.body;
+    var icon = document.querySelector('.dark-mode-btn i');
+    
+    if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        if (icon) icon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        if (icon) icon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+function loadTheme() {
+    var savedTheme = localStorage.getItem('theme');
+    var body = document.body;
+    var icon = document.querySelector('.dark-mode-btn i');
+    
+    if (savedTheme === 'dark') {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        if (icon) icon.className = 'fas fa-sun';
+    } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        if (icon) icon.className = 'fas fa-moon';
+    }
+}
+
+// ========== CART ==========
 var cart = JSON.parse(localStorage.getItem('choiceCart')) || [];
 
 function saveCart() {
@@ -50,7 +83,7 @@ function addToCart(product) {
     }
     saveCart();
     updateCartUI();
-    showToast('<i class="fas fa-check-circle"></i> ' + product.name + ' savatga qo\'shildi!');
+    showToast('<i class="fas fa-check-circle"></i> ' + product.name + ' added to cart!');
 }
 
 function removeFromCart(id) {
@@ -87,16 +120,12 @@ function updateCartUI() {
     renderCartItems();
 }
 
-// =============================================
-// FORMAT
-// =============================================
+// ========== FORMAT ==========
 function formatPrice(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' so\'m';
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' sum';
 }
 
-// =============================================
-// PRODUCT CARD
-// =============================================
+// ========== PRODUCT CARD ==========
 function productCardHTML(p) {
     var badgeHTML = '';
     if (p.badge) {
@@ -124,8 +153,8 @@ function productCardHTML(p) {
             '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">' +
             badgeHTML +
             '<div class="product-actions">' +
-                '<button onclick="event.stopPropagation();showDetail(' + p.id + ')" title="Tezkor ko\'rish"><i class="fas fa-eye"></i></button>' +
-                '<button title="Sevimlilarga qo\'shish" onclick="event.stopPropagation();"><i class="far fa-heart"></i></button>' +
+                '<button onclick="event.stopPropagation();showDetail(' + p.id + ')" title="Quick View"><i class="fas fa-eye"></i></button>' +
+                '<button title="Add to Wishlist" onclick="event.stopPropagation();"><i class="far fa-heart"></i></button>' +
             '</div>' +
         '</div>' +
         '<div class="product-info">' +
@@ -138,7 +167,7 @@ function productCardHTML(p) {
                 '<span class="price-unit">/ ' + p.unit + '</span>' +
             '</div>' +
             '<button class="btn-cart" onclick="event.stopPropagation();addToCartById(' + p.id + ')">' +
-                '<i class="fas fa-cart-plus"></i> Savatga' +
+                '<i class="fas fa-cart-plus"></i> Add to Cart' +
             '</button>' +
         '</div>' +
     '</div>';
@@ -149,9 +178,7 @@ function addToCartById(id) {
     if (p) addToCart(p);
 }
 
-// =============================================
-// RENDER FUNCTIONS
-// =============================================
+// ========== RENDER FUNCTIONS ==========
 function renderCategories() {
     var grid = document.getElementById('categoriesGrid');
     if (!grid) return;
@@ -215,8 +242,8 @@ function renderCartItems() {
     if (cart.length === 0) {
         container.innerHTML = '<div class="cart-empty-state">' +
             '<i class="fas fa-shopping-cart"></i>' +
-            '<p>Savatda hozircha mahsulot yo\'q</p>' +
-            '<button class="btn btn-outline" onclick="toggleCart();showPage(\'shop\');">Xarid qilish</button>' +
+            '<p>Your cart is currently empty</p>' +
+            '<button class="btn btn-outline" onclick="toggleCart();showPage(\'shop\');">Start Shopping</button>' +
         '</div>';
         footer.style.display = 'none';
     } else {
@@ -233,7 +260,7 @@ function renderCartItems() {
                         '<button onclick="changeQty(' + item.id + ', 1)">+</button>' +
                     '</div>' +
                 '</div>' +
-                '<button class="cart-remove" onclick="removeFromCart(' + item.id + ')" title="O\'chirish">' +
+                '<button class="cart-remove" onclick="removeFromCart(' + item.id + ')" title="Remove">' +
                     '<i class="fas fa-trash"></i>' +
                 '</button>' +
             '</div>';
@@ -244,66 +271,50 @@ function renderCartItems() {
     }
 }
 
-// =============================================
-// NAVIGATION
-// =============================================
+// ========== NAVIGATION ==========
 function showPage(pageName) {
-    // Hide all pages
     var allPages = document.querySelectorAll('.page');
     allPages.forEach(function(page) {
         page.classList.remove('active');
     });
 
-    // Remove active from nav links
     var allLinks = document.querySelectorAll('.nav-link');
     allLinks.forEach(function(link) {
         link.classList.remove('active');
     });
 
-    // Show target page
     var targetPage = document.getElementById(pageName + 'Page');
     if (targetPage) {
         targetPage.classList.add('active');
     }
 
-    // Activate correct nav link
     allLinks.forEach(function(link) {
         var linkText = link.textContent.trim().toLowerCase();
         if (
-            (pageName === 'home' && linkText.indexOf('bosh sahifa') > -1) ||
-            (pageName === 'shop' && linkText.indexOf('do\'kon') > -1) ||
-            (pageName === 'discount' && linkText.indexOf('chegirmalar') > -1) ||
-            (pageName === 'about' && linkText.indexOf('biz haqimizda') > -1) ||
-            (pageName === 'contact' && linkText.indexOf('aloqa') > -1)
+            (pageName === 'home' && linkText.indexOf('home') > -1) ||
+            (pageName === 'shop' && linkText.indexOf('shop') > -1) ||
+            (pageName === 'discount' && linkText.indexOf('discount') > -1) ||
+            (pageName === 'about' && linkText.indexOf('about') > -1) ||
+            (pageName === 'contact' && linkText.indexOf('contact') > -1)
         ) {
             link.classList.add('active');
         }
     });
 
-    // Render content
-    if (pageName === 'shop') {
-        renderAll();
-    }
-    if (pageName === 'discount') {
-        renderDiscount();
-    }
+    if (pageName === 'shop') renderAll();
+    if (pageName === 'discount') renderDiscount();
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Close mobile menu
     closeMobileMenu();
 }
 
 function filterProducts(filter, btn) {
-    // Update active button
     var allBtns = document.querySelectorAll('.filter-btn');
     allBtns.forEach(function(b) { b.classList.remove('active'); });
 
     if (btn) {
         btn.classList.add('active');
     } else {
-        // Find button by data-filter
         var targetBtn = document.querySelector('.filter-btn[data-filter="' + filter + '"]');
         if (targetBtn) targetBtn.classList.add('active');
     }
@@ -322,16 +333,14 @@ function applySort() {
     renderAll(activeFilter, sortBy);
 }
 
-// =============================================
-// QUICK VIEW
-// =============================================
+// ========== QUICK VIEW ==========
 function showDetail(id) {
     var p = products.find(function(x) { return x.id === id; });
     if (!p) return;
 
     var oldPriceHTML = '';
     if (p.oldPrice) {
-        oldPriceHTML = '<span style="font-size:16px;color:#9ca3af;text-decoration:line-through;margin-left:12px;">' + formatPrice(p.oldPrice) + '</span>';
+        oldPriceHTML = '<span style="font-size:16px;color:var(--text-muted);text-decoration:line-through;margin-left:12px;">' + formatPrice(p.oldPrice) + '</span>';
     }
 
     var starsHTML = '';
@@ -356,18 +365,18 @@ function showDetail(id) {
         '</div>' +
         '<div>' +
             '<p style="color:#16a34a;font-weight:600;text-transform:uppercase;font-size:12px;letter-spacing:1px;margin-bottom:8px;">' + p.catName + '</p>' +
-            '<h2 style="font-size:28px;font-weight:700;margin-bottom:10px;">' + p.name + '</h2>' +
-            '<div style="color:#f59e0b;margin-bottom:12px;">' + starsHTML + ' <span style="color:#9ca3af;">(' + p.reviews + ' ta sharh)</span></div>' +
-            '<div style="font-size:28px;font-weight:700;color:#111827;margin-bottom:16px;">' + formatPrice(p.price) + oldPriceHTML + discountPercent + '</div>' +
-            '<p style="color:#6b7280;line-height:1.8;margin-bottom:20px;">Yangi va sifatli mahsulot. Omborda mavjud. Tezkor yetkazish xizmati mavjud.</p>' +
+            '<h2 style="font-size:28px;font-weight:700;margin-bottom:10px;color:var(--text);">' + p.name + '</h2>' +
+            '<div style="color:#f59e0b;margin-bottom:12px;">' + starsHTML + ' <span style="color:var(--text-muted);">(' + p.reviews + ' reviews)</span></div>' +
+            '<div style="font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px;">' + formatPrice(p.price) + oldPriceHTML + discountPercent + '</div>' +
+            '<p style="color:var(--text-secondary);line-height:1.8;margin-bottom:20px;">Fresh and quality product. Available in stock. Fast delivery service available.</p>' +
             '<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">' +
-                '<span style="color:#6b7280;">Miqdor:</span>' +
-                '<button onclick="changeDetailQty(-1)" style="width:36px;height:36px;border-radius:8px;border:2px solid #e5e7eb;background:#fff;font-size:18px;font-weight:700;cursor:pointer;">-</button>' +
-                '<input type="number" id="detailQtyInput" value="1" min="1" style="width:60px;text-align:center;font-size:16px;font-weight:600;border:2px solid #e5e7eb;border-radius:8px;padding:6px;" readonly>' +
-                '<button onclick="changeDetailQty(1)" style="width:36px;height:36px;border-radius:8px;border:2px solid #e5e7eb;background:#fff;font-size:18px;font-weight:700;cursor:pointer;">+</button>' +
+                '<span style="color:var(--text-secondary);">Quantity:</span>' +
+                '<button onclick="changeDetailQty(-1)" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--bg-gray);font-size:18px;font-weight:700;cursor:pointer;color:var(--text);">-</button>' +
+                '<input type="number" id="detailQtyInput" value="1" min="1" style="width:60px;text-align:center;font-size:16px;font-weight:600;border:2px solid var(--border);border-radius:8px;padding:6px;background:var(--bg-gray);color:var(--text);" readonly>' +
+                '<button onclick="changeDetailQty(1)" style="width:36px;height:36px;border-radius:8px;border:2px solid var(--border);background:var(--bg-gray);font-size:18px;font-weight:700;cursor:pointer;color:var(--text);">+</button>' +
             '</div>' +
             '<button class="btn btn-primary btn-lg btn-block" onclick="addToCartByIdWithQty(' + p.id + ');closeQuickView();">' +
-                '<i class="fas fa-cart-plus"></i> Savatga qo\'shish' +
+                '<i class="fas fa-cart-plus"></i> Add to Cart' +
             '</button>' +
         '</div>' +
     '</div>';
@@ -394,17 +403,11 @@ function addToCartByIdWithQty(id) {
     if (existing) {
         existing.qty += qty;
     } else {
-        cart.push({
-            id: p.id,
-            name: p.name,
-            price: p.price,
-            image: p.image,
-            qty: qty
-        });
+        cart.push({ id: p.id, name: p.name, price: p.price, image: p.image, qty: qty });
     }
     saveCart();
     updateCartUI();
-    showToast('<i class="fas fa-check-circle"></i> ' + qty + ' ta ' + p.name + ' savatga qo\'shildi!');
+    showToast('<i class="fas fa-check-circle"></i> ' + qty + 'x ' + p.name + ' added to cart!');
 }
 
 function closeQuickView() {
@@ -412,9 +415,7 @@ function closeQuickView() {
     document.body.style.overflow = '';
 }
 
-// =============================================
-// CART SIDEBAR
-// =============================================
+// ========== CART SIDEBAR ==========
 function toggleCart() {
     var sidebar = document.getElementById('cartSidebar');
     var overlay = document.getElementById('overlayBg');
@@ -429,9 +430,7 @@ function closeCart() {
     document.body.style.overflow = '';
 }
 
-// =============================================
-// MOBILE MENU
-// =============================================
+// ========== MOBILE MENU ==========
 function toggleMobileMenu() {
     var menu = document.getElementById('mobileMenu');
     var overlay = document.getElementById('overlayBg');
@@ -452,9 +451,7 @@ function closeAll() {
     closeQuickView();
 }
 
-// =============================================
-// TOAST
-// =============================================
+// ========== TOAST ==========
 function showToast(message) {
     var toast = document.getElementById('toast');
     toast.innerHTML = message;
@@ -465,24 +462,15 @@ function showToast(message) {
     }, 2800);
 }
 
-// =============================================
-// SLIDER
-// =============================================
+// ========== SLIDER ==========
 var currentSlide = 0;
 var totalSlides = document.querySelectorAll('.hero-slide').length;
 
 function showSlide(index) {
     var slides = document.querySelectorAll('.hero-slide');
     var dots = document.querySelectorAll('.dot');
-
-    slides.forEach(function(slide, i) {
-        slide.classList.toggle('active', i === index);
-    });
-
-    dots.forEach(function(dot, i) {
-        dot.classList.toggle('active', i === index);
-    });
-
+    slides.forEach(function(slide, i) { slide.classList.toggle('active', i === index); });
+    dots.forEach(function(dot, i) { dot.classList.toggle('active', i === index); });
     currentSlide = index;
 }
 
@@ -496,13 +484,9 @@ function prevSlide() {
     showSlide(currentSlide);
 }
 
-function goToSlide(index) {
-    showSlide(index);
-}
+function goToSlide(index) { showSlide(index); }
 
-// =============================================
-// PROMO TIMER
-// =============================================
+// ========== PROMO TIMER ==========
 function startPromoTimer() {
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 3);
@@ -511,35 +495,25 @@ function startPromoTimer() {
     function updateTimer() {
         var now = new Date();
         var diff = targetDate - now;
-
-        if (diff <= 0) {
-            diff = 3 * 24 * 60 * 60 * 1000;
-            targetDate = new Date(now.getTime() + diff);
-        }
-
+        if (diff <= 0) { diff = 3 * 24 * 60 * 60 * 1000; targetDate = new Date(now.getTime() + diff); }
         var days = Math.floor(diff / (1000 * 60 * 60 * 24));
         var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
         var daysEl = document.getElementById('days');
         var hoursEl = document.getElementById('hours');
         var minutesEl = document.getElementById('minutes');
         var secondsEl = document.getElementById('seconds');
-
         if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
         if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
         if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
         if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
     }
-
     updateTimer();
     setInterval(updateTimer, 1000);
 }
 
-// =============================================
-// SEARCH
-// =============================================
+// ========== SEARCH ==========
 document.addEventListener('DOMContentLoaded', function() {
     var searchInput = document.getElementById('searchInput');
     if (searchInput) {
@@ -557,70 +531,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     grid.innerHTML = html;
                 }
             } else if (q.length === 0) {
-                if (document.getElementById('shopPage').classList.contains('active')) {
-                    renderAll();
-                }
+                if (document.getElementById('shopPage').classList.contains('active')) renderAll();
             }
         });
     }
 });
 
-// =============================================
-// EVENT LISTENERS
-// =============================================
+// ========== EVENT LISTENERS ==========
 document.addEventListener('DOMContentLoaded', function() {
-    // Cart toggle
+    loadTheme();
+    
     var cartBtn = document.querySelector('.cart-btn');
-    if (cartBtn) {
-        cartBtn.addEventListener('click', toggleCart);
-    }
-
-    // Cart close
+    if (cartBtn) cartBtn.addEventListener('click', toggleCart);
+    
     var cartClose = document.querySelector('.cart-close');
-    if (cartClose) {
-        cartClose.addEventListener('click', toggleCart);
-    }
-
-    // Filter buttons
+    if (cartClose) cartClose.addEventListener('click', toggleCart);
+    
     var filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            var filter = this.getAttribute('data-filter');
-            filterProducts(filter, this);
+            filterProducts(this.getAttribute('data-filter'), this);
         });
     });
-
-    // Quick view close
+    
     var qvClose = document.querySelector('.quickview-close');
-    if (qvClose) {
-        qvClose.addEventListener('click', closeQuickView);
-    }
-
-    // Quick view overlay click
+    if (qvClose) qvClose.addEventListener('click', closeQuickView);
+    
     var qvModal = document.getElementById('quickViewModal');
     if (qvModal) {
         qvModal.addEventListener('click', function(e) {
             if (e.target === qvModal) closeQuickView();
         });
     }
-
-    // ESC key
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeAll();
     });
-
-    // Auto slider
-    if (totalSlides > 0) {
-        setInterval(nextSlide, 4500);
-    }
-
-    // Start promo timer
+    
+    if (totalSlides > 0) setInterval(nextSlide, 4500);
+    
     startPromoTimer();
 });
 
-// =============================================
-// INIT
-// =============================================
+// ========== INIT ==========
 renderCategories();
 renderFeatured();
 renderAll();
