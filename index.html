@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choice Market - Online Oziq-ovqat Do'koni</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span class="top-bar-text">
+                    <i class="fas fa-truck-fast"></i>
+                    50,000 so'mdan yuqori buyurtmalarga bepul yetkazib berish!
+                </span>
+                <span class="top-bar-contact">
+                    <i class="fas fa-phone"></i>
+                    +998 90 123 45 67
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-basket-shopping"></i>
+                    </div>
+                    <span class="logo-text">
+                        Choice<span class="logo-highlight">Market</span>
+                    </span>
+                </a>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Mahsulotlarni qidirish..." id="searchInput">
+                </div>
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Sevimlilar">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="icon-btn" aria-label="Profil">
+                        <i class="far fa-user"></i>
+                    </button>
+                    <button class="icon-btn cart-btn" aria-label="Savat" onclick="toggleCart()">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active" onclick="navigateTo('home')">Bosh sahifa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shop" class="nav-link" onclick="navigateTo('shop')">Do'kon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#discount" class="nav-link" onclick="navigateTo('discount')">Chegirmalar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link" onclick="navigateTo('about')">Biz haqimizda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link" onclick="navigateTo('contact')">Aloqa</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">Choice<span class="logo-highlight">Market</span></span>
+            <button class="close-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="#home" onclick="navigateTo('home'); toggleMobileMenu();">Bosh sahifa</a></li>
+            <li><a href="#shop" onclick="navigateTo('shop'); toggleMobileMenu();">Do'kon</a></li>
+            <li><a href="#discount" onclick="navigateTo('discount'); toggleMobileMenu();">Chegirmalar</a></li>
+            <li><a href="#about" onclick="navigateTo('about'); toggleMobileMenu();">Biz haqimizda</a></li>
+            <li><a href="#contact" onclick="navigateTo('contact'); toggleMobileMenu();">Aloqa</a></li>
+        </ul>
+        <div class="mobile-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Qidirish...">
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Hero Banner -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-slider" id="heroSlider">
+                        <div class="hero-slide active" style="background: linear-gradient(135deg, #16a34a, #15803d);">
+                            <div class="hero-content">
+                                <span class="hero-badge">Yangi yil chegirmalari</span>
+                                <h1 class="hero-title">Barcha mahsulotlarga <br>30% gacha chegirma</h1>
+                                <p class="hero-description">Yangi yil uchun eng sara mahsulotlarni arzon narxlarda xarid qiling</p>
+                                <button class="btn btn-white" onclick="navigateTo('discount')">
+                                    Xarid qilish <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="hero-image">
+                                <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600" alt="Chegirmalar">
+                            </div>
+                        </div>
+                        <div class="hero-slide" style="background: linear-gradient(135deg, #ea580c, #c2410c);">
+                            <div class="hero-content">
+                                <span class="hero-badge">Sog'lom ovqatlanish</span>
+                                <h1 class="hero-title">Organik va tabiiy <br>mahsulotlar bo'limi</h1>
+                                <p class="hero-description">Sog'lig'ingiz uchun eng foydali mahsulotlarni tanlang</p>
+                                <button class="btn btn-white" onclick="navigateTo('shop')">
+                                    Ko'rish <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="hero-image">
+                                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600" alt="Organik mahsulotlar">
+                            </div>
+                        </div>
+                        <div class="hero-slide" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">
+                            <div class="hero-content">
+                                <span class="hero-badge">Tezkor yetkazib berish</span>
+                                <h1 class="hero-title">Buyurtmangiz <br>2 soat ichida yetkaziladi</h1>
+                                <p class="hero-description">Shahar bo'ylab tezkor va bepul yetkazib berish xizmati</p>
+                                <button class="btn btn-white" onclick="navigateTo('shop')">
+                                    Buyurtma berish <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="hero-image">
+                                <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=600" alt="Yetkazib berish">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="features">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background-color: #dcfce7;">
+                                <i class="fas fa-truck" style="color: #16a34a;"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h3>Tezkor yetkazib berish</h3>
+                                <p>Buyurtmangiz 2 soat ichida yetkaziladi</p>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background-color: #fef3c7;">
+                                <i class="fas fa-medal" style="color: #f59e0b;"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h3>Sifat kafolati</h3>
+                                <p>100% tabiiy va yangi mahsulotlar</p>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background-color: #dbeafe;">
+                                <i class="fas fa-headset" style="color: #2563eb;"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h3>24/7 Qo'llab-quvvatlash</h3>
+                                <p>Har doim yordam berishga tayyormiz</p>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background-color: #fce7f3;">
+                                <i class="fas fa-wallet" style="color: #ec4899;"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h3>Qulay to'lov</h3>
+                                <p>Naqd, karta yoki Click orqali</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="categories-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Kategoriyalar</h2>
+                        <a href="#shop" class="see-all" onclick="navigateTo('shop')">
+                            Barchasi <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                    <div class="categories-grid" id="categoriesGrid"></div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="products-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Mashhur mahsulotlar</h2>
+                        <a href="#shop" class="see-all" onclick="navigateTo('shop')">
+                            Barchasi <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                    <div class="products-grid" id="featuredProductsGrid"></div>
+                </div>
+            </section>
+
+            <!-- Promo Banner -->
+            <section class="promo-section">
+                <div class="container">
+                    <div class="promo-banner">
+                        <div class="promo-content">
+                            <span class="promo-badge">Maxsus taklif</span>
+                            <h2>Birinchi buyurtmaga <span class="text-primary">20% chegirma</span></h2>
+                            <p>Ro'yxatdan o'ting va birinchi xaridingiz uchun maxsus chegirmaga ega bo'ling</p>
+                            <div class="promo-timer" id="promoTimer">
+                                <div class="timer-item">
+                                    <span class="timer-value" id="timerHours">24</span>
+                                    <span class="timer-label">Soat</span>
+                                </div>
+                                <div class="timer-item">
+                                    <span class="timer-value" id="timerMinutes">00</span>
+                                    <span class="timer-label">Daqiqa</span>
+                                </div>
+                                <div class="timer-item">
+                                    <span class="timer-value" id="timerSeconds">00</span>
+                                    <span class="timer-label">Soniya</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Ro'yxatdan o'tish</button>
+                        </div>
+                        <div class="promo-image">
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500" alt="Promo">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials-section">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Mijozlarimiz fikri</h2>
+                        <p class="section-subtitle">Bizning mijozlarimiz nima deydi</p>
+                    </div>
+                    <div class="testimonials-grid" id="testimonialsGrid"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Shop Page -->
+        <div id="shopPage" class="page">
+            <div class="container">
+                <div class="shop-header">
+                    <h1 class="shop-title">Do'kon</h1>
+                    <div class="shop-controls">
+                        <div class="filter-buttons" id="categoryFilters"></div>
+                        <select class="sort-select" id="sortSelect" onchange="filterProducts()">
+                            <option value="default">Saralash: Default</option>
+                            <option value="price-asc">Narx: Arzondan qimmatga</option>
+                            <option value="price-desc">Narx: Qimmatdan arzonga</option>
+                            <option value="name-asc">Nomi: A-Z</option>
+                            <option value="rating-desc">Reyting: Yuqoridan pastga</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-grid" id="allProductsGrid"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+
+        <!-- Discount Page -->
+        <div id="discountPage" class="page">
+            <div class="container">
+                <div class="shop-header">
+                    <h1 class="shop-title">Chegirmalar</h1>
+                    <p class="shop-subtitle">Chegirmadagi mahsulotlarni xarid qiling va tejang</p>
+                </div>
+                <div class="products-grid" id="discountProductsGrid"></div>
+            </div>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="productDetailPage" class="page">
+            <div class="container">
+                <button class="back-btn" onclick="navigateTo('shop')">
+                    <i class="fas fa-arrow-left"></i> Orqaga
+                </button>
+                <div id="productDetailContent"></div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <h1>Biz haqimizda</h1>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h2>Choice Market - Sizning ishonchli online do'koningiz</h2>
+                            <p>Biz 2023 yildan beri mijozlarimizga eng sifatli va yangi oziq-ovqat mahsulotlarini yetkazib berib kelmoqdamiz. Bizning maqsadimiz - har bir oilaga sifatli mahsulotlarni qulay narxlarda yetkazib berish.</p>
+                            <div class="about-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">10,000+</span>
+                                    <span class="stat-label">Mamnun mijozlar</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Mahsulot turlari</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">24/7</span>
+                                    <span class="stat-label">Xizmat ko'rsatish</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600" alt="About us">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="page">
+            <div class="container">
+                <div class="contact-content">
+                    <h1>Biz bilan bog'lanish</h1>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h3>Telefon</h3>
+                                    <p>+998 90 123 45 67</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>info@choicemarket.uz</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-location-dot"></i>
+                                <div>
+                                    <h3>Manzil</h3>
+                                    <p>Toshkent sh., Mirzo Ulug'bek tumani</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="contact-form">
+                            <input type="text" placeholder="Ismingiz" class="form-input">
+                            <input type="email" placeholder="Email manzilingiz" class="form-input">
+                            <textarea placeholder="Xabaringiz" class="form-input" rows="5"></textarea>
+                            <button type="submit" class="btn btn-primary">Yuborish</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Savat</h3>
+            <button class="close-btn" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Savat hozircha bo'sh</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Jami:</span>
+                <span class="cart-total-price" id="cartTotal">0 so'm</span>
+            </div>
+            <button class="btn btn-primary btn-full">Buyurtma berish</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeQuickView()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="quickViewContent"></div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">
+                            <i class="fas fa-basket-shopping"></i>
+                        </div>
+                        <span class="logo-text">
+                            Choice<span class="logo-highlight">Market</span>
+                        </span>
+                    </div>
+                    <p>Yangi va sifatli mahsulotlarni qulay narxlarda yetkazib beruvchi online oziq-ovqat do'koni.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tezkor havolalar</h4>
+                    <ul>
+                        <li><a href="#home" onclick="navigateTo('home')">Bosh sahifa</a></li>
+                        <li><a href="#shop" onclick="navigateTo('shop')">Do'kon</a></li>
+                        <li><a href="#discount" onclick="navigateTo('discount')">Chegirmalar</a></li>
+                        <li><a href="#about" onclick="navigateTo('about')">Biz haqimizda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kategoriyalar</h4>
+                    <ul id="footerCategories"></ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Aloqa</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> info@choicemarket.uz</li>
+                        <li><i class="fas fa-location-dot"></i> Toshkent shahri</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Choice Market. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
