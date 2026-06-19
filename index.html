@@ -3,130 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choice Market - Do'kon</title>
+    <title>Choice Market - Premium Do'kon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
 
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <div class="loader-text">Choice<span>Market</span></div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar">
         <a href="#" class="logo">
             <div class="logo-icon">
-                <i class="fas fa-store"></i>
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=100" alt="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-store\'></i>'">
             </div>
             Choice<span>Market</span>
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home"><i class="fas fa-home"></i> Bosh sahifa</a></li>
+            <li><a href="#categories"><i class="fas fa-th-large"></i> Kategoriyalar</a></li>
             <li><a href="#products"><i class="fas fa-boxes"></i> Mahsulotlar</a></li>
             <li><a href="#about"><i class="fas fa-info-circle"></i> Biz haqimizda</a></li>
             <li><a href="#contact"><i class="fas fa-phone"></i> Aloqa</a></li>
         </ul>
-        <a href="https://t.me/choicemarket" target="_blank" class="phone-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="https://t.me/choicemarket" target="_blank" class="phone-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
         <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     </nav>
 
     <!-- HERO -->
     <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920" alt="market" class="hero-bg-img" onerror="this.style.display='none'">
+        </div>
         <div class="hero-overlay"></div>
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
+        <div class="hero-particles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
         </div>
         <div class="hero-content">
             <div class="hero-badge">
-                <i class="fas fa-star"></i> Eng yaxshi tanlov
+                <i class="fas fa-crown"></i> Premium Market
             </div>
-            <h1><span>Choice Market</span> bilan sifatli xarid qiling</h1>
-            <p>Keng assortiment • Qulay narxlar • Tezkor yetkazib berish</p>
+            <h1>Sifatli mahsulotlar <span>Choice Market</span>da</h1>
+            <p>1000+ mahsulot • Tezkor yetkazib berish • 24/7 xizmat</p>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <i class="fas fa-box"></i>
-                    <span>1000+</span>
-                    <small>Mahsulot</small>
+                    <div class="hero-stat-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="hero-stat-info">
+                        <span class="counter" data-target="1000">0</span>
+                        <small>Mahsulot</small>
+                    </div>
                 </div>
                 <div class="hero-stat">
-                    <i class="fas fa-smile"></i>
-                    <span>5000+</span>
-                    <small>Mijoz</small>
+                    <div class="hero-stat-icon"><i class="fas fa-smile"></i></div>
+                    <div class="hero-stat-info">
+                        <span class="counter" data-target="5000">0</span>
+                        <small>Mijoz</small>
+                    </div>
                 </div>
                 <div class="hero-stat">
-                    <i class="fas fa-truck-fast"></i>
-                    <span>24/7</span>
-                    <small>Yetkazib berish</small>
+                    <div class="hero-stat-icon"><i class="fas fa-truck-fast"></i></div>
+                    <div class="hero-stat-info">
+                        <span>24/7</span>
+                        <small>Yetkazish</small>
+                    </div>
                 </div>
             </div>
             <div class="btn-group">
-                <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i> Mahsulotlar</a>
+                <a href="#products" class="btn-primary"><i class="fas fa-shopping-bag"></i> Xarid qilish</a>
                 <a href="https://t.me/choicemarket" target="_blank" class="btn-secondary"><i class="fab fa-telegram-plane"></i> Telegram</a>
             </div>
+        </div>
+        <div class="scroll-down">
+            <span></span>
         </div>
     </section>
 
     <!-- CATEGORIES -->
-    <section class="categories">
-        <h2 class="section-title"><i class="fas fa-th-large"></i> Kategoriyalar</h2>
-        <p class="section-subtitle">O'zingizga kerakli kategoriyani tanlang</p>
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <span class="section-badge">Kategoriyalar</span>
+            <h2 class="section-title">O'zingizga kerakli <span>kategoriyani</span> tanlang</h2>
+            <p class="section-subtitle">Eng sifatli mahsulotlar bizning do'konda</p>
+        </div>
         <div class="categories-grid">
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-apple-alt"></i></div>
-                <h3>Meva va sabzavotlar</h3>
-                <p>120+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400" alt="mevalar" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-apple-alt\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Meva va sabzavotlar</h3>
+                    <p>120+ mahsulot</p>
+                </div>
             </div>
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-bread-slice"></i></div>
-                <h3>Non mahsulotlari</h3>
-                <p>85+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" alt="non" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-bread-slice\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-bread-slice"></i>
+                    <h3>Non mahsulotlari</h3>
+                    <p>85+ mahsulot</p>
+                </div>
             </div>
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-cheese"></i></div>
-                <h3>Sut mahsulotlari</h3>
-                <p>200+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=400" alt="sut" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-cheese\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-cheese"></i>
+                    <h3>Sut mahsulotlari</h3>
+                    <p>200+ mahsulot</p>
+                </div>
             </div>
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-drumstick-bite"></i></div>
-                <h3>Go'sht mahsulotlari</h3>
-                <p>95+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400" alt="gosht" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-drumstick-bite\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>Go'sht mahsulotlari</h3>
+                    <p>95+ mahsulot</p>
+                </div>
             </div>
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-candy-cane"></i></div>
-                <h3>Shirinliklar</h3>
-                <p>150+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=400" alt="shirinlik" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-candy-cane\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-candy-cane"></i>
+                    <h3>Shirinliklar</h3>
+                    <p>150+ mahsulot</p>
+                </div>
             </div>
             <div class="category-card">
-                <div class="category-icon"><i class="fas fa-mug-hot"></i></div>
-                <h3>Ichimliklar</h3>
-                <p>180+ mahsulot</p>
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400" alt="ichimlik" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-mug-hot\'></i>'">
+                </div>
+                <div class="category-overlay"></div>
+                <div class="category-info">
+                    <i class="fas fa-mug-hot"></i>
+                    <h3>Ichimliklar</h3>
+                    <p>180+ mahsulot</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- PRODUCTS -->
     <section class="products" id="products">
-        <h2 class="section-title"><i class="fas fa-fire"></i> Ommabop mahsulotlar</h2>
-        <p class="section-subtitle">Eng ko'p xarid qilinadigan mahsulotlar</p>
+        <div class="section-header">
+            <span class="section-badge">Mahsulotlar</span>
+            <h2 class="section-title">Eng <span>ommabop</span> mahsulotlar</h2>
+            <p class="section-subtitle">Mijozlar tomonidan eng ko'p xarid qilinadigan mahsulotlar</p>
+        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-badge">-20%</div>
                 <div class="product-img">
-                    <i class="fas fa-apple-alt"></i>
+                    <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400" alt="olma" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-apple-alt\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Mevalar</span>
                     <h3>Qizil olma</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(4.5)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>4.5</span>
                     </div>
                     <div class="product-price">
-                        <span class="old-price">25,000 so'm</span>
+                        <span class="old-price">25,000</span>
                         <span class="new-price">20,000 so'm</span>
                     </div>
                     <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Savatga</button>
@@ -135,18 +200,14 @@
             <div class="product-card">
                 <div class="product-badge hot">🔥 Aksiya</div>
                 <div class="product-img">
-                    <i class="fas fa-bread-slice"></i>
+                    <img src="https://images.unsplash.com/photo-1549931319-a545799fce48?w=400" alt="non" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-bread-slice\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Non</span>
                     <h3>Bug'doy noni</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(5.0)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>5.0</span>
                     </div>
                     <div class="product-price">
                         <span class="new-price">5,000 so'm</span>
@@ -157,18 +218,14 @@
             <div class="product-card">
                 <div class="product-badge new">Yangi</div>
                 <div class="product-img">
-                    <i class="fas fa-cheese"></i>
+                    <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400" alt="pishloq" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-cheese\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Sut</span>
                     <h3>Pishloq</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>(4.0)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        <span>4.0</span>
                     </div>
                     <div class="product-price">
                         <span class="new-price">35,000 so'm</span>
@@ -179,21 +236,17 @@
             <div class="product-card">
                 <div class="product-badge">-15%</div>
                 <div class="product-img">
-                    <i class="fas fa-drumstick-bite"></i>
+                    <img src="https://images.unsplash.com/photo-1551028150-64b9f392e1c2?w=400" alt="gosht" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-drumstick-bite\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Go'sht</span>
                     <h3>Mol go'shti</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(4.5)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>4.5</span>
                     </div>
                     <div class="product-price">
-                        <span class="old-price">70,000 so'm</span>
+                        <span class="old-price">70,000</span>
                         <span class="new-price">59,500 so'm</span>
                     </div>
                     <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Savatga</button>
@@ -201,18 +254,14 @@
             </div>
             <div class="product-card">
                 <div class="product-img">
-                    <i class="fas fa-candy-cane"></i>
+                    <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400" alt="shokolad" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-candy-cane\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Shirinlik</span>
                     <h3>Shokolad</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(5.0)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>5.0</span>
                     </div>
                     <div class="product-price">
                         <span class="new-price">15,000 so'm</span>
@@ -223,21 +272,17 @@
             <div class="product-card">
                 <div class="product-badge hot">🔥 Bestseller</div>
                 <div class="product-img">
-                    <i class="fas fa-mug-hot"></i>
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" alt="kofe" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-mug-hot\'></i>'">
                 </div>
                 <div class="product-info">
                     <span class="product-category">Ichimlik</span>
                     <h3>Kofe</h3>
                     <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span>(4.8)</span>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>4.8</span>
                     </div>
                     <div class="product-price">
-                        <span class="old-price">45,000 so'm</span>
+                        <span class="old-price">45,000</span>
                         <span class="new-price">38,000 so'm</span>
                     </div>
                     <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Savatga</button>
@@ -251,81 +296,94 @@
 
     <!-- FEATURES -->
     <section class="features">
-        <h2 class="section-title"><i class="fas fa-gem"></i> Nega aynan Choice Market?</h2>
-        <p class="section-subtitle">Mijozlar bizni nima uchun tanlaydi</p>
+        <div class="section-header">
+            <span class="section-badge">Afzalliklar</span>
+            <h2 class="section-title">Nega aynan <span>Choice Market?</span></h2>
+            <p class="section-subtitle">Bizning asosiy ustunliklarimiz</p>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-truck-fast"></i>
                 </div>
                 <h3>Tezkor yetkazib berish</h3>
-                <p>Buyurtmangiz 24 soat ichida eshigingizda</p>
+                <p>Buyurtmangiz 24 soat ichida manzilingizga yetkaziladi</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-medal"></i>
+                    <i class="fas fa-shield-halved"></i>
                 </div>
-                <h3>Sifatli mahsulot</h3>
-                <p>Barcha mahsulotlar sifat kafolati bilan</p>
+                <h3>Sifat kafolati</h3>
+                <p>Barcha mahsulotlar 100% sifat kafolati bilan taqdim etiladi</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-tags"></i>
                 </div>
-                <h3>Qulay narxlar</h3>
-                <p>Bozordagi eng maqbul narxlar</p>
+                <h3>Eng yaxshi narxlar</h3>
+                <p>Bozordagi eng maqbul va hamyonbop narxlar</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-headset"></i>
                 </div>
                 <h3>24/7 qo'llab-quvvatlash</h3>
-                <p>Har doim aloqadamiz, tezkor yordam</p>
+                <p>Mijozlarimizga kunu-tun xizmat ko'rsatamiz</p>
             </div>
         </div>
     </section>
 
     <!-- ABOUT -->
     <section class="about" id="about">
-        <div class="about-text">
-            <h2><i class="fas fa-store"></i> Choice Market haqida</h2>
-            <p>Choice Market – 2020 yildan beri faoliyat yuritib kelayotgan ishonchli onlayn do'kon. Biz mijozlarimizga eng sifatli mahsulotlarni qulay narxlarda yetkazib berishni maqsad qilganmiz.</p>
-            <p>Keng assortiment, tezkor yetkazib berish va professional xizmat ko'rsatish – bizning asosiy ustunligimiz.</p>
-            <div class="about-features">
-                <div class="afeature"><i class="fas fa-check-circle"></i> 1000+ mahsulot</div>
-                <div class="afeature"><i class="fas fa-check-circle"></i> Sifat kafolati</div>
-                <div class="afeature"><i class="fas fa-check-circle"></i> Tezkor yetkazib berish</div>
-                <div class="afeature"><i class="fas fa-check-circle"></i> Qulay narxlar</div>
-            </div>
+        <div class="about-bg">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920" alt="about" onerror="this.style.display='none'">
         </div>
-        <div class="about-stats">
-            <div class="stat-box">
-                <i class="fas fa-box-open"></i>
-                <h3 class="counter" data-target="1000">0</h3>
-                <p>Mahsulot turi</p>
+        <div class="about-overlay"></div>
+        <div class="about-content">
+            <div class="about-text">
+                <span class="section-badge">Biz haqimizda</span>
+                <h2>Choice Market – <span>ishonchli</span> onlayn do'kon</h2>
+                <p>2020 yildan beri faoliyat yuritib kelayotgan Choice Market – O'zbekistondagi eng yirik onlayn oziq-ovqat do'konlaridan biri. Biz 1000 dan ortiq mahsulot turlarini eng qulay narxlarda taklif qilamiz.</p>
+                <p>Bizning maqsad – mijozlarimizga sifatli mahsulotlarni tezkor yetkazib berish va ularning ishonchini qozonish.</p>
+                <div class="about-features">
+                    <div class="afeature"><i class="fas fa-check-circle"></i> 1000+ mahsulot</div>
+                    <div class="afeature"><i class="fas fa-check-circle"></i> Sifat kafolati</div>
+                    <div class="afeature"><i class="fas fa-check-circle"></i> Tezkor yetkazish</div>
+                    <div class="afeature"><i class="fas fa-check-circle"></i> 24/7 xizmat</div>
+                </div>
             </div>
-            <div class="stat-box">
-                <i class="fas fa-users"></i>
-                <h3 class="counter" data-target="5000">0</h3>
-                <p>Mamnun mijoz</p>
-            </div>
-            <div class="stat-box">
-                <i class="fas fa-truck"></i>
-                <h3 class="counter" data-target="15000">0</h3>
-                <p>Yetkazib berilgan</p>
-            </div>
-            <div class="stat-box">
-                <i class="fas fa-star"></i>
-                <h3>4.8<span>/5</span></h3>
-                <p>O'rtacha reyting</p>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <i class="fas fa-box-open"></i>
+                    <h3 class="counter" data-target="1000">0</h3>
+                    <p>Mahsulot turi</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    <h3 class="counter" data-target="5000">0</h3>
+                    <p>Mamnun mijoz</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-truck"></i>
+                    <h3 class="counter" data-target="15000">0</h3>
+                    <p>Buyurtmalar</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-star"></i>
+                    <h3>4.8<span>/5</span></h3>
+                    <p>Reyting</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
-        <h2 class="section-title"><i class="fas fa-address-book"></i> Biz bilan bog'laning</h2>
-        <p class="section-subtitle">Savollaringiz bormi? Buyurtma bermoqchimisiz?</p>
+        <div class="section-header">
+            <span class="section-badge">Aloqa</span>
+            <h2 class="section-title">Biz bilan <span>bog'laning</span></h2>
+            <p class="section-subtitle">Savol yoki buyurtma uchun biz bilan aloqaga chiqing</p>
+        </div>
         <div class="contact-container">
             <div class="contact-info">
                 <div class="contact-card">
@@ -346,7 +404,7 @@
                     <div class="contact-icon"><i class="fas fa-clock"></i></div>
                     <div class="contact-details">
                         <h4>Ish vaqti</h4>
-                        <p>Har kuni<br>08:00 - 22:00</p>
+                        <p>Har kuni: 08:00 - 22:00</p>
                     </div>
                 </div>
             </div>
@@ -376,7 +434,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3><i class="fas fa-store"></i> Choice Market</h3>
-                <p>Ishonchli onlayn do'kon – sifatli mahsulotlar, qulay narxlar.</p>
+                <p>Ishonchli onlayn do'kon – sifatli mahsulotlar, qulay narxlar, tezkor yetkazib berish.</p>
                 <div class="social-icons">
                     <a href="https://t.me/choicemarket" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -393,14 +451,14 @@
             </div>
             <div class="footer-section">
                 <h4>Kategoriyalar</h4>
-                <a href="#products"><i class="fas fa-chevron-right"></i> Meva va sabzavotlar</a>
-                <a href="#products"><i class="fas fa-chevron-right"></i> Non mahsulotlari</a>
-                <a href="#products"><i class="fas fa-chevron-right"></i> Sut mahsulotlari</a>
-                <a href="#products"><i class="fas fa-chevron-right"></i> Ichimliklar</a>
+                <a href="#categories"><i class="fas fa-chevron-right"></i> Meva va sabzavotlar</a>
+                <a href="#categories"><i class="fas fa-chevron-right"></i> Non mahsulotlari</a>
+                <a href="#categories"><i class="fas fa-chevron-right"></i> Sut mahsulotlari</a>
+                <a href="#categories"><i class="fas fa-chevron-right"></i> Ichimliklar</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Choice Market. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2024 Choice Market. Barcha huquqlar himoyalangan. | Designed with <i class="fas fa-heart"></i></p>
         </div>
     </footer>
 
