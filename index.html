@@ -1,91 +1,167 @@
+```html
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choice Market</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- External CSS -->
-  <link rel="stylesheet" href="./assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Choice Market</title>
+  <!-- CSS fayl -->
+  <link rel="stylesheet" href="./assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
-  <!-- ========== HEADER ========== -->
-  <header>
-    <div class="container">
-      <a href="#" class="logo">
-        <i class="fas fa-store-alt"></i> Choice Market
-      </a>
-
-      <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Mahsulot izlash..." />
-        <i class="fas fa-search search-icon"></i>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">
+        <i class="fas fa-code logo__icon"></i>
+        <span class="logo__text">frontend<span>choice</span></span>
       </div>
-
-      <div class="header-actions">
-        <button id="darkModeToggle" class="dark-mode-btn">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button id="cartToggle" class="cart-btn">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="hidden-sm">Savat</span>
-          <span id="cartCount" class="cart-badge">0</span>
-        </button>
-        <button class="login-btn">
-          <i class="fas fa-user"></i> Kirish
-        </button>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#"><i class="fas fa-home"></i> Bosh sahifa</a></li>
+          <li><a href="#"><i class="fas fa-graduation-cap"></i> Kurslar</a></li>
+          <li><a href="#"><i class="fas fa-store"></i> Market</a></li>
+          <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Bog'lanish</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="btn btn--outline" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Kirish</button>
+        <button class="btn btn--primary" id="signupBtn"><i class="fas fa-user-plus"></i> Ro'yxat</button>
       </div>
     </div>
   </header>
 
-  <!-- ========== MAIN ========== -->
-  <main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <span class="hero__badge"><i class="fas fa-fire"></i> 2026 yangiliklari</span>
+        <h1 class="hero__title">Frontend <br><span>Choice Market</span></h1>
+        <p class="hero__desc">Eng zamonaviy frontend vositalari, kurslar va loyihalar — bir joyda. O‘z mahoratingizni oshiring va bozorda yetakchi bo‘ling.</p>
+        <div class="hero__buttons">
+          <button class="btn btn--primary btn--large" id="catalogBtn"><i class="fas fa-th-list"></i> Katalogni ko‘rish</button>
+          <button class="btn btn--outline btn--large" id="trialBtn"><i class="fas fa-play"></i> Bepul sinov</button>
+        </div>
+        <div class="hero__stats">
+          <div><span id="userCount">12k+</span> <i class="fas fa-users"></i> faol foydalanuvchi</div>
+          <div><span>48+</span> <i class="fas fa-book-open"></i> kurslar</div>
+          <div><span>100%</span> <i class="fas fa-check-circle"></i> amaliy</div>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__card-grid">
+          <div class="hero__card hero__card--1">
+            <i class="fab fa-react"></i> <span>React</span>
+          </div>
+          <div class="hero__card hero__card--2">
+            <i class="fab fa-vuejs"></i> <span>Vue</span>
+          </div>
+          <div class="hero__card hero__card--3">
+            <i class="fab fa-js"></i> <span>TypeScript</span>
+          </div>
+          <div class="hero__card hero__card--4">
+            <i class="fab fa-css3-alt"></i> <span>Tailwind</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET / KATEGORIYALAR -->
+  <section class="market">
     <div class="container">
-
-      <!-- Filters -->
-      <div class="filters-wrapper">
-        <span class="filter-label"><i class="fas fa-sliders-h"></i> Filter:</span>
-        <button class="filter-btn active" data-filter="all">Hammasi</button>
-        <button class="filter-btn" data-filter="electronics">Elektronika</button>
-        <button class="filter-btn" data-filter="clothing">Kiyim</button>
-        <button class="filter-btn" data-filter="home">Uy-joy</button>
-        <button class="filter-btn" data-filter="books">Kitoblar</button>
-        <span class="result-count" id="resultCount">12 ta mahsulot</span>
+      <div class="section__header">
+        <h2>Tanlov <span>bozori</span></h2>
+        <p>Eng sara frontend kurslar, kitoblar va vositalar</p>
       </div>
-
-      <!-- Products grid -->
-      <div id="productsGrid" class="products-grid">
-        <!-- Mahsulotlar JavaScript orqali yuklanadi -->
+      <div class="market__grid">
+        <div class="market__item">
+          <div class="market__icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Mobil ilovalar</h3>
+          <p>React Native, Flutter, PWA</p>
+        </div>
+        <div class="market__item">
+          <div class="market__icon"><i class="fas fa-globe"></i></div>
+          <h3>Web framework</h3>
+          <p>Next.js, Nuxt, SvelteKit</p>
+        </div>
+        <div class="market__item">
+          <div class="market__icon"><i class="fas fa-puzzle-piece"></i></div>
+          <h3>UI kutubxonalar</h3>
+          <p>Material UI, Chakra, Radix</p>
+        </div>
+        <div class="market__item">
+          <div class="market__icon"><i class="fas fa-cogs"></i></div>
+          <h3>DevOps & CI</h3>
+          <p>Vite, Webpack, GitHub Actions</p>
+        </div>
       </div>
+    </div>
+  </section>
 
-    </div>
-  </main>
-
-  <!-- ========== SHOPPING CART SIDEBAR ========== -->
-  <div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header">
-      <h2><i class="fas fa-shopping-cart"></i> Savat</h2>
-      <button id="closeCart" class="close-cart">&times;</button>
-    </div>
-    <div id="cartItems" class="cart-items">
-      <p class="empty-cart">Savat bo'sh</p>
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Jami:</span>
-        <span id="cartTotal">0 so'm</span>
+  <!-- KURSLAR / PRODUCTS (Market) -->
+  <section class="products">
+    <div class="container">
+      <div class="section__header">
+        <h2>Eng ko‘p <span>sotilgan</span></h2>
+        <p>Hozirgi trenddagi kurslar va to‘plamlar</p>
       </div>
-      <button class="checkout-btn">
-        <i class="fas fa-credit-card"></i> Buyurtma berish
-      </button>
+      <div class="products__grid" id="productsGrid">
+        <!-- Kartalar JS orqali yuklanadi -->
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Overlay -->
-  <div id="cartOverlay" class="cart-overlay hidden"></div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="logo">
+          <i class="fas fa-code logo__icon"></i>
+          <span class="logo__text">frontend<span>choice</span></span>
+        </div>
+        <p>Frontend sohasidagi eng ishonchli market. 2026</p>
+      </div>
+      <div class="footer__links">
+        <div>
+          <h4>Mahsulotlar</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-graduation-cap"></i> Kurslar</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> Kitoblar</a></li>
+            <li><a href="#"><i class="fas fa-project-diagram"></i> Loyihalar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kompaniya</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-info-circle"></i> Biz haqimizda</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i> Karyera</a></li>
+            <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Yordam</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            <li><a href="#"><i class="fas fa-phone"></i> Aloqa</a></li>
+            <li><a href="#"><i class="fas fa-file-contract"></i> Shartlar</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy">
+      <div class="container">
+        <p>© 2026 Frontend Choice Market — barcha huquqlar himoyalangan</p>
+      </div>
+    </div>
+  </footer>
 
-  <!-- External JavaScript -->
+  <!-- JS fayl -->
   <script src="./assets/script.js"></script>
 </body>
 </html>
+```
