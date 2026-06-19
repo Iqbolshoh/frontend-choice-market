@@ -6,11 +6,11 @@
     <title>Choice Market - Sifatli mahsulotlar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ========== TOP BAR ========== -->
+    <!-- TOP BAR -->
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-left">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <!-- ========== HEADER ========== -->
+    <!-- HEADER -->
     <header class="header" id="header">
         <div class="container">
             <a href="#" class="logo" onclick="showPage('home')">
@@ -64,62 +64,50 @@
                     <i class="fas fa-shopping-bag"></i>
                     <span class="btn-badge cart-badge" id="cartCount">0</span>
                 </button>
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ========== NAVIGATION ========== -->
+    <!-- NAVIGATION -->
     <nav class="main-nav" id="mainNav">
         <div class="container">
             <ul class="nav-list">
-                <li><a href="#" class="nav-link active" onclick="showPage('home')">
-                    <i class="fas fa-home"></i> Bosh sahifa
-                </a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('shop')">
-                    <i class="fas fa-store"></i> Do'kon
-                </a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('discount')">
-                    <i class="fas fa-tag"></i> Chegirmalar
-                    <span class="nav-badge">Hot</span>
-                </a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('about')">
-                    <i class="fas fa-info-circle"></i> Biz haqimizda
-                </a></li>
-                <li><a href="#" class="nav-link" onclick="showPage('contact')">
-                    <i class="fas fa-envelope"></i> Aloqa
-                </a></li>
+                <li><a href="#" class="nav-link active" onclick="showPage('home')"><i class="fas fa-home"></i> Bosh sahifa</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('shop')"><i class="fas fa-store"></i> Do'kon</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('discount')"><i class="fas fa-tag"></i> Chegirmalar <span class="nav-badge">Hot</span></a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('about')"><i class="fas fa-info-circle"></i> Biz haqimizda</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('contact')"><i class="fas fa-envelope"></i> Aloqa</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- ========== MOBILE MENU ========== -->
+    <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <div class="logo">
                 <div class="logo-icon"><i class="fas fa-basket-shopping"></i></div>
                 <div class="logo-text"><span>Choice</span><span>Market</span></div>
             </div>
-            <button class="mobile-close-btn"><i class="fas fa-times"></i></button>
+            <button class="mobile-close-btn" onclick="toggleMobileMenu()"><i class="fas fa-times"></i></button>
         </div>
         <ul class="mobile-nav-list">
-            <li><a href="#" onclick="showPage('home');closeMobileMenu();">Bosh sahifa</a></li>
-            <li><a href="#" onclick="showPage('shop');closeMobileMenu();">Do'kon</a></li>
-            <li><a href="#" onclick="showPage('discount');closeMobileMenu();">Chegirmalar</a></li>
-            <li><a href="#" onclick="showPage('about');closeMobileMenu();">Biz haqimizda</a></li>
-            <li><a href="#" onclick="showPage('contact');closeMobileMenu();">Aloqa</a></li>
+            <li><a href="#" onclick="showPage('home');toggleMobileMenu();"><i class="fas fa-home"></i> Bosh sahifa</a></li>
+            <li><a href="#" onclick="showPage('shop');toggleMobileMenu();"><i class="fas fa-store"></i> Do'kon</a></li>
+            <li><a href="#" onclick="showPage('discount');toggleMobileMenu();"><i class="fas fa-tag"></i> Chegirmalar</a></li>
+            <li><a href="#" onclick="showPage('about');toggleMobileMenu();"><i class="fas fa-info-circle"></i> Biz haqimizda</a></li>
+            <li><a href="#" onclick="showPage('contact');toggleMobileMenu();"><i class="fas fa-envelope"></i> Aloqa</a></li>
         </ul>
     </div>
-    <div class="overlay-bg" id="overlayBg"></div>
+    <div class="overlay-bg" id="overlayBg" onclick="closeAll()"></div>
 
-    <!-- ========== MAIN CONTENT ========== -->
+    <!-- MAIN CONTENT -->
     <main>
 
-        <!-- ===== HOME PAGE ===== -->
+        <!-- HOME PAGE -->
         <div id="homePage" class="page active">
-
             <!-- HERO -->
             <section class="hero-section">
                 <div class="container">
@@ -131,9 +119,7 @@
                                         <span class="slide-badge">Maxsus taklif</span>
                                         <h2>Yangi yil uchun <span>30%</span> chegirma</h2>
                                         <p>Barcha meva va sabzavotlarga</p>
-                                        <button class="btn btn-light" onclick="showPage('discount')">
-                                            Xarid qilish <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <button class="btn btn-light" onclick="showPage('discount')">Xarid qilish <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                     <div class="slide-image">
                                         <img src="https://pngimg.com/d/grocery_PNG46.png" alt="products">
@@ -144,9 +130,7 @@
                                         <span class="slide-badge">Yangi</span>
                                         <h2>Organik <span>mahsulotlar</span></h2>
                                         <p>Fermerlardan to'g'ridan-to'g'ri</p>
-                                        <button class="btn btn-light" onclick="showPage('shop')">
-                                            Ko'rish <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <button class="btn btn-light" onclick="showPage('shop')">Ko'rish <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                     <div class="slide-image">
                                         <img src="https://pngimg.com/d/grocery_PNG47.png" alt="products">
@@ -157,23 +141,21 @@
                                         <span class="slide-badge">Tezkor</span>
                                         <h2>2 soatda <span>yetkazish</span></h2>
                                         <p>Toshkent shahri bo'ylab</p>
-                                        <button class="btn btn-light" onclick="showPage('shop')">
-                                            Buyurtma <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <button class="btn btn-light" onclick="showPage('shop')">Buyurtma <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                     <div class="slide-image">
-                                        <img src="https://pngimg.com/d/delivery_PNG10.png" alt="delivery">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2332/2332770.png" alt="delivery">
                                     </div>
                                 </div>
                             </div>
                             <div class="slider-controls">
-                                <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
                                 <div class="slider-dots">
-                                    <span class="dot active"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
+                                    <span class="dot active" onclick="goToSlide(0)"></span>
+                                    <span class="dot" onclick="goToSlide(1)"></span>
+                                    <span class="dot" onclick="goToSlide(2)"></span>
                                 </div>
-                                <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                                <button class="slider-next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <div class="hero-sidebar">
@@ -208,7 +190,7 @@
                             </div>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-shield-check"></i></div>
+                            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
                             <div>
                                 <h4>Sifat kafolati</h4>
                                 <p>100% tabiiy mahsulotlar</p>
@@ -240,9 +222,7 @@
                             <h2 class="section-title">Kategoriyalar</h2>
                             <p class="section-subtitle">O'zingizga kerakli bo'limni tanlang</p>
                         </div>
-                        <button class="btn btn-outline" onclick="showPage('shop')">
-                            Barchasi <i class="fas fa-arrow-right"></i>
-                        </button>
+                        <button class="btn btn-outline" onclick="showPage('shop')">Barchasi <i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="categories-grid" id="categoriesGrid"></div>
                 </div>
@@ -350,7 +330,7 @@
             </section>
         </div>
 
-        <!-- ===== SHOP PAGE ===== -->
+        <!-- SHOP PAGE -->
         <div id="shopPage" class="page">
             <div class="container">
                 <div class="page-header">
@@ -368,7 +348,7 @@
                         <button class="filter-btn" data-filter="sweets">Shirinliklar</button>
                     </div>
                     <div class="sort-box">
-                        <select id="sortSelect">
+                        <select id="sortSelect" onchange="applySort()">
                             <option value="default">Saralash</option>
                             <option value="price-asc">Narx: arzondan qimmatga</option>
                             <option value="price-desc">Narx: qimmatdan arzonga</option>
@@ -381,7 +361,7 @@
             </div>
         </div>
 
-        <!-- ===== DISCOUNT PAGE ===== -->
+        <!-- DISCOUNT PAGE -->
         <div id="discountPage" class="page">
             <div class="container">
                 <div class="page-header discount-header">
@@ -392,7 +372,7 @@
             </div>
         </div>
 
-        <!-- ===== ABOUT PAGE ===== -->
+        <!-- ABOUT PAGE -->
         <div id="aboutPage" class="page">
             <div class="container">
                 <div class="page-header">
@@ -428,7 +408,7 @@
             </div>
         </div>
 
-        <!-- ===== CONTACT PAGE ===== -->
+        <!-- CONTACT PAGE -->
         <div id="contactPage" class="page">
             <div class="container">
                 <div class="page-header">
@@ -470,9 +450,7 @@
                             </div>
                             <input type="text" placeholder="Mavzu">
                             <textarea placeholder="Xabaringizni yozing..." rows="5" required></textarea>
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-paper-plane"></i> Yuborish
-                            </button>
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Yuborish</button>
                         </form>
                     </div>
                 </div>
@@ -481,17 +459,17 @@
 
     </main>
 
-    <!-- ========== CART SIDEBAR ========== -->
+    <!-- CART SIDEBAR -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-sidebar-header">
             <h3><i class="fas fa-shopping-bag"></i> Savat</h3>
-            <button class="cart-close"><i class="fas fa-times"></i></button>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-items" id="cartItems">
             <div class="cart-empty-state">
                 <i class="fas fa-shopping-cart"></i>
                 <p>Savatda hozircha mahsulot yo'q</p>
-                <button class="btn btn-outline" onclick="closeCart();showPage('shop');">Xarid qilish</button>
+                <button class="btn btn-outline" onclick="toggleCart();showPage('shop');">Xarid qilish</button>
             </div>
         </div>
         <div class="cart-sidebar-footer" id="cartFooter" style="display:none;">
@@ -501,24 +479,22 @@
                     <span class="cart-total-price" id="cartTotal">0 so'm</span>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" onclick="alert('Buyurtma qabul qilindi!')">
-                Buyurtma berish
-            </button>
+            <button class="btn btn-primary btn-block" onclick="alert('Buyurtma qabul qilindi!')">Buyurtma berish</button>
         </div>
     </div>
 
-    <!-- ========== QUICK VIEW MODAL ========== -->
+    <!-- QUICK VIEW MODAL -->
     <div class="quickview-modal" id="quickViewModal">
         <div class="quickview-content">
-            <button class="quickview-close"><i class="fas fa-times"></i></button>
+            <button class="quickview-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
             <div id="quickViewInner"></div>
         </div>
     </div>
 
-    <!-- ========== NOTIFICATION ========== -->
+    <!-- TOAST NOTIFICATION -->
     <div class="toast" id="toast"></div>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -538,19 +514,19 @@
                 <div class="footer-col">
                     <h4>Tezkor havolalar</h4>
                     <ul>
-                        <li><a href="#" onclick="showPage('home')">Bosh sahifa</a></li>
-                        <li><a href="#" onclick="showPage('shop')">Do'kon</a></li>
-                        <li><a href="#" onclick="showPage('discount')">Chegirmalar</a></li>
-                        <li><a href="#" onclick="showPage('about')">Biz haqimizda</a></li>
+                        <li><a href="#" onclick="showPage('home')"><i class="fas fa-chevron-right"></i> Bosh sahifa</a></li>
+                        <li><a href="#" onclick="showPage('shop')"><i class="fas fa-chevron-right"></i> Do'kon</a></li>
+                        <li><a href="#" onclick="showPage('discount')"><i class="fas fa-chevron-right"></i> Chegirmalar</a></li>
+                        <li><a href="#" onclick="showPage('about')"><i class="fas fa-chevron-right"></i> Biz haqimizda</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Kategoriyalar</h4>
                     <ul>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('fruits');">Meva va Sabzavotlar</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('dairy');">Sut Mahsulotlari</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('meat');">Go'sht va Baliq</a></li>
-                        <li><a href="#" onclick="showPage('shop');filterProducts('drinks');">Ichimliklar</a></li>
+                        <li><a href="#" onclick="showPage('shop');filterProducts('fruits');"><i class="fas fa-chevron-right"></i> Meva va Sabzavotlar</a></li>
+                        <li><a href="#" onclick="showPage('shop');filterProducts('dairy');"><i class="fas fa-chevron-right"></i> Sut Mahsulotlari</a></li>
+                        <li><a href="#" onclick="showPage('shop');filterProducts('meat');"><i class="fas fa-chevron-right"></i> Go'sht va Baliq</a></li>
+                        <li><a href="#" onclick="showPage('shop');filterProducts('drinks');"><i class="fas fa-chevron-right"></i> Ichimliklar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -570,6 +546,6 @@
         </div>
     </footer>
 
-    <script src="./assets/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
